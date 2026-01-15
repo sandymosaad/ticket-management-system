@@ -62,7 +62,7 @@ export default function SignUp() {
              onBlur={formik.handleBlur}
              value={formik.values["name"]}
             />
-            {formik.errors["name"]&&(
+            {formik.errors["name"]&& formik.touched.name&&(
             <p className={style.error}>
                 {formik.errors.name}
             </p>
@@ -80,6 +80,12 @@ export default function SignUp() {
             onBlur={formik.handleBlur}
             value={formik.values['email']}
             />
+            {formik.errors.email && formik.touched.email&& (
+            <p className={style.error}>
+                {formik.errors.email}
+            </p>
+            )
+            }
         </div>
         <div className={style.inputContainer}>
             <label className={style.formLabel}>Password</label>
@@ -92,6 +98,11 @@ export default function SignUp() {
             onBlur={formik.handleBlur}
             value={formik.values['password']}
             />
+            {formik.errors["password"]&& formik.touched.password&&(
+            <p className={style.error}>
+                {formik.errors.password}
+            </p>
+            )}
         </div>
         <div className={style.inputContainer}>
             <label className={style.formLabel}>RePassword</label>
@@ -104,6 +115,12 @@ export default function SignUp() {
             onBlur={formik.handleBlur}
             value={formik.values['rePassword']}
             />
+             {formik.errors["rePassword"]&& formik.touched.rePassword&&(
+            <p className={style.error}>
+                {formik.errors.rePassword}
+            </p>
+            )
+            }
         </div>
         <div className={style.formFotter}>
             <button type='submit' className={style.button}>
