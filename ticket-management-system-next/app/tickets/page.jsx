@@ -1,7 +1,14 @@
-import React from 'react'
+import { getUsers } from "../lib/data-service";
 
-export default function AllTicket() {
+export default async function AllTicket() {
+//  const users = await getUsers();
+
   return (
-    <div>AllTicket</div>
-  )
+    <div>
+      <h1>Users</h1>
+      {/* {users.map((user) => (
+        <p key={user.id}>{user.email}</p>
+      ))} */}
+    </div>
+  );
 }

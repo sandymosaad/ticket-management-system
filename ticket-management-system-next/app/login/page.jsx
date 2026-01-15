@@ -1,15 +1,13 @@
 "use client"
 import React from 'react'
 import {useFormik} from "formik";
-import * as Yup from "yup";
 import style from "../auth.module.css"
 import  Link  from 'next/link';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
-
-
+import { getUsers} from '../lib/data-service';
 export default function SignIn() {
-
+    console.log(getUsers)
     function submitSignIm(values) {
         console.log(values)
     }

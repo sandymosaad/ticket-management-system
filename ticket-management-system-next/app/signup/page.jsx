@@ -6,13 +6,60 @@ import style from "../auth.module.css"
 import  Link  from 'next/link';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { addUserProfile } from '../lib/data-service';
 
 
+export default  function SignUp() {
+//     async function  submitRegister(values) {
+//         // const aa = await addUser(values)
+//          console.log('aa')
+//          console.log(values)
+//         const { data, error } = await supabase.auth.signUp({
+//         email: values.email,
+//         password: values.password,
+//         })
+//         console.log('aas')
+//         console.log(data)
+//         if(error){
+//             console.log(error.message)
+//             return;
+//         }
 
-export default function SignUp() {
-    function submitRegister(values) {
-        console.log(values)
-    }
+// const user = data.user;
+// console.log(user)
+// console.log("user")
+
+//   // create profile
+//   await addUser({
+//     id: user.id,
+//     name: values.name,
+//     email: values.email,
+//   });
+
+//   console.log("User registered successfully");
+//     }
+async function submitRegister(values) {
+  const { data, error } = await supabase.auth.signUp({
+    email: values.email,
+    password: values.password,
+  });
+
+  if (error) {
+    console.error(error.message);
+    return;
+  }
+
+  const user = data.user;
+
+  // create profile
+  await addUserProfile({
+    id: user.id,
+    name: values.name,
+    email: values.email,
+  });
+
+  console.log("User registered successfully");
+}
 
     const validationSchema = Yup.object({
         name:Yup.string('Name should be string')
