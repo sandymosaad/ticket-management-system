@@ -1,8 +1,9 @@
+"use client"
 import React from 'react'
 import {useFormik} from "formik";
 import * as Yup from "yup";
-import style from "../../auth.module.css"
-import { Link } from 'react-router-dom';
+import style from "../auth.module.css"
+import  Link  from 'next/link';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
@@ -50,7 +51,7 @@ export default function SignUp() {
         <p className={style.par}>Sign up to get started with ticket management</p>  
     </div>
     <form onSubmit={formik.handleSubmit} >
-        <div>
+        <div className={style.inputContainer}> 
             <label className={style.formLabel}>Full Name</label>
             <input
              type='text'
@@ -61,8 +62,14 @@ export default function SignUp() {
              onBlur={formik.handleBlur}
              value={formik.values["name"]}
             />
+            {formik.errors["name"]&&(
+            <p className={style.error}>
+                {formik.errors.name}
+            </p>
+            )
+            }
         </div>
-        <div>
+        <div className={style.inputContainer}> 
             <label className={style.formLabel}>Email Address</label>
             <input
              type='email'
@@ -74,7 +81,7 @@ export default function SignUp() {
             value={formik.values['email']}
             />
         </div>
-        <div>
+        <div className={style.inputContainer}>
             <label className={style.formLabel}>Password</label>
             <input
              type='password'
@@ -86,7 +93,7 @@ export default function SignUp() {
             value={formik.values['password']}
             />
         </div>
-        <div>
+        <div className={style.inputContainer}>
             <label className={style.formLabel}>RePassword</label>
             <input
              type='password'
@@ -102,7 +109,7 @@ export default function SignUp() {
             <button type='submit' className={style.button}>
                 Create Account
             </button>
-            <p>Already have an account? <Link to="/sign-in">sign in</Link></p>
+            <p>Already have an account? <Link href="/login" className={style.navactionLink}>sign in</Link></p>
         </div>
 
     </form>

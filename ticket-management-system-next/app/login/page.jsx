@@ -1,8 +1,9 @@
+"use client"
 import React from 'react'
 import {useFormik} from "formik";
 import * as Yup from "yup";
-import style from "../../auth.module.css"
-import { Link } from 'react-router-dom';
+import style from "../auth.module.css"
+import  Link  from 'next/link';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 
@@ -13,21 +14,11 @@ export default function SignIn() {
         console.log(values)
     }
 
-    const validationSchema = Yup.object({
-        email:Yup.string()
-        .required("Email is required")
-        .email("Invalid email format"),
-
-        password:Yup.string()
-        .required("Password is required")
-        .min(6, "Password must be at least 6 characters"),
-    })
     const formik =useFormik({
         initialValues:{
             email:"",
             password:"",
         },
-        validationSchema,
         onSubmit:submitSignIm,
     })
   return <>
@@ -40,7 +31,7 @@ export default function SignIn() {
         <p className={style.par}>Sign in to your account to continue</p>  
     </div>
     <form onSubmit={formik.handleSubmit} >
-        <div>
+        <div className={style.inputContainer}>
             <label className={style.formLabel}>Email Address</label>
             <input
              type='email'
@@ -52,7 +43,7 @@ export default function SignIn() {
             value={formik.values['email']}
             />
         </div>
-        <div>
+        <div className={style.inputContainer}>
             <label className={style.formLabel}>Password</label>
             <input
              type='password'
@@ -68,7 +59,7 @@ export default function SignIn() {
             <button type='submit' className={style.button}>
                 sign in
             </button>
-            <p>Don't have an account?  <Link to="/register">Sign up</Link></p>
+            <p>Don't have an account?  <Link href="/signup" className={style.navactionLink}>Sign up</Link></p>
         </div>
 
     </form>

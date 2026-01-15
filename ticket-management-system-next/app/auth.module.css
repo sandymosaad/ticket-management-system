@@ -28,6 +28,7 @@ body{
 
 .par{
     color: grey;
+    padding: 4px;
 }
 
 .form{
@@ -46,14 +47,14 @@ body{
    color: #242424;
    font-family: 'Times New Roman', Times, serif;
    display: block;
-   margin-bottom: 5px;
+   margin: 5 0 ;
 }
 
 .formInput {
     width: 90%;
     max-width: 700px;
     padding: 10px;
-    margin-bottom: 15px;
+    /* margin-bottom: 5px; */
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
@@ -66,11 +67,22 @@ body{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 15px 0;
 }
 .button:hover {
     background-color: rgb(2, 22, 77);
 }
 
+.inputContainer{
+    margin-bottom: 15px;
+}
+
+.navactionLink {
+    color : rgb(24, 58, 152);
+}
+.error{
+    color: red;
+}
 
 @media screen and (max-width:560px){
     .form{
