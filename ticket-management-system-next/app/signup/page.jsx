@@ -7,59 +7,39 @@ import  Link  from 'next/link';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { addUserProfile } from '../lib/data-service';
-
-
+import { supabase } from "../lib/supabaseClient";
+import { useRouter } from 'next/navigation';
+import {useState} from "react"
 export default  function SignUp() {
-//     async function  submitRegister(values) {
-//         // const aa = await addUser(values)
-//          console.log('aa')
-//          console.log(values)
-//         const { data, error } = await supabase.auth.signUp({
-//         email: values.email,
-//         password: values.password,
-//         })
-//         console.log('aas')
-//         console.log(data)
-//         if(error){
-//             console.log(error.message)
-//             return;
-//         }
+    const router = useRouter();
+    const [errorMessage, setErrorMessage] = useState("")
 
-// const user = data.user;
-// console.log(user)
-// console.log("user")
+    async function submitRegister(values) {
+    const { data, error } = await supabase.auth.signUp({
+        email: values.email,
+        password: values.password,
+    });
 
-//   // create profile
-//   await addUser({
-//     id: user.id,
-//     name: values.name,
-//     email: values.email,
-//   });
+    if (error) {
+        console.error(error.message);
+       // console.log('sandy:error' , error)
+        setErrorMessage(error.message);
+        return ;
+    }
+   // console.log('sandy data', data)
+    const user = data.user;
 
-//   console.log("User registered successfully");
-//     }
-async function submitRegister(values) {
-  const { data, error } = await supabase.auth.signUp({
-    email: values.email,
-    password: values.password,
-  });
-
-  if (error) {
-    console.error(error.message);
-    return;
-  }
-
-  const user = data.user;
-
-  // create profile
-  await addUserProfile({
-    id: user.id,
-    name: values.name,
-    email: values.email,
-  });
-
-  console.log("User registered successfully");
-}
+    // create profile
+    await addUserProfile({
+        id: user.id,
+        name: values.name,
+        email: values.email,
+        password: values.password,
+    });
+    
+    console.log("User registered successfully");
+    router.push('/login')
+    }
 
     const validationSchema = Yup.object({
         name:Yup.string('Name should be string')
@@ -88,6 +68,7 @@ async function submitRegister(values) {
         validationSchema,
         onSubmit:submitRegister,
     })
+
   return <>
   <div className={style.form}>
     <div className={style.formHeader}>
@@ -101,13 +82,13 @@ async function submitRegister(values) {
         <div className={style.inputContainer}> 
             <label className={style.formLabel}>Full Name</label>
             <input
-             type='text'
-             name='name'
-             placeholder='Sandy Mosaad'
-             className={style.formInput}
-             onChange={formik.handleChange}
-             onBlur={formik.handleBlur}
-             value={formik.values["name"]}
+                type='text'
+                name='name'
+                placeholder='Sandy Mosaad'
+                className={style.formInput}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values["name"]}
             />
             {formik.errors["name"]&& formik.touched.name&&(
             <p className={style.error}>
@@ -119,13 +100,13 @@ async function submitRegister(values) {
         <div className={style.inputContainer}> 
             <label className={style.formLabel}>Email Address</label>
             <input
-             type='email'
-             name='email'
-             placeholder='you@example.com'
-             className={style.formInput}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values['email']}
+                type='email'
+                name='email'
+                placeholder='you@example.com'
+                className={style.formInput}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values['email']}
             />
             {formik.errors.email && formik.touched.email&& (
             <p className={style.error}>
@@ -137,13 +118,13 @@ async function submitRegister(values) {
         <div className={style.inputContainer}>
             <label className={style.formLabel}>Password</label>
             <input
-             type='password'
-             name='password'
-            placeholder='*********'
-            className={style.formInput}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values['password']}
+                type='password'
+                name='password'
+                placeholder='*********'
+                className={style.formInput}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values['password']}
             />
             {formik.errors["password"]&& formik.touched.password&&(
             <p className={style.error}>
@@ -154,21 +135,22 @@ async function submitRegister(values) {
         <div className={style.inputContainer}>
             <label className={style.formLabel}>RePassword</label>
             <input
-             type='password'
-             name='rePassword'
-            placeholder='*********'
-            className={style.formInput}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values['rePassword']}
+                type='password'
+                name='rePassword'
+                placeholder='*********'
+                className={style.formInput}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values['rePassword']}
             />
-             {formik.errors["rePassword"]&& formik.touched.rePassword&&(
-            <p className={style.error}>
-                {formik.errors.rePassword}
-            </p>
+            {formik.errors["rePassword"]&& formik.touched.rePassword&&(
+                <p className={style.error}>
+                    {formik.errors.rePassword}
+                </p>
             )
             }
         </div>
+        {errorMessage && <p className={style.error}>{errorMessage}</p>}
         <div className={style.formFotter}>
             <button type='submit' className={style.button}>
                 Create Account

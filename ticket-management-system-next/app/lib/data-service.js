@@ -13,15 +13,6 @@ export async function getUsers() {
   return data;
 }
 
-// export async function addUser(user) {
-//   console.log(user)
-// const { data, error } = await supabase
-//   .from('profiles')
-//   .insert([
-//     user
-//   ])
-//  return data
-// }
 export async function addUserProfile(profile) {
   const { data, error } = await supabase
     .from("profiles")
