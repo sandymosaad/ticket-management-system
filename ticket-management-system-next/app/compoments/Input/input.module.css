@@ -1,0 +1,22 @@
+.inputContainer{
+    margin-bottom: 15px;
+}
+.formLabel{
+   font-size: 18px;
+   font-weight: 400;
+   color: #242424;
+   font-family: 'Times New Roman', Times, serif;
+   display: block;
+   margin: 5 0 ;
+}
+
+.formInput {
+    width: 90%;
+    max-width: 700px;
+    padding: 10px;
+    /* margin-bottom: 5px; */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+

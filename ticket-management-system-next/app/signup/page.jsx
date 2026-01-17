@@ -10,6 +10,8 @@ import { addUserProfile } from '../lib/data-service';
 import { supabase } from "../lib/supabaseClient";
 import { useRouter } from 'next/navigation';
 import {useState} from "react"
+import Input from '../compoments/Input/page';
+
 export default  function SignUp() {
     const router = useRouter();
     const [errorMessage, setErrorMessage] = useState("")
@@ -69,6 +71,12 @@ export default  function SignUp() {
         onSubmit:submitRegister,
     })
 
+    const inputData = [
+    { label: "Full Name", type: "text", inputName: "name", placeholder: "Sandy Mosaad" },
+    { label: "Email Address", type: "email", inputName: "email", placeholder: "you@example.com" },
+    { label: "Password", type: "password", inputName: "password", placeholder: "*********" },
+    { label: "RePassword", type: "password", inputName: "rePassword", placeholder: "*********" }
+]   
   return <>
   <div className={style.form}>
     <div className={style.formHeader}>
@@ -79,77 +87,9 @@ export default  function SignUp() {
         <p className={style.par}>Sign up to get started with ticket management</p>  
     </div>
     <form onSubmit={formik.handleSubmit} >
-        <div className={style.inputContainer}> 
-            <label className={style.formLabel}>Full Name</label>
-            <input
-                type='text'
-                name='name'
-                placeholder='Sandy Mosaad'
-                className={style.formInput}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values["name"]}
-            />
-            {formik.errors["name"]&& formik.touched.name&&(
-            <p className={style.error}>
-                {formik.errors.name}
-            </p>
-            )
-            }
-        </div>
-        <div className={style.inputContainer}> 
-            <label className={style.formLabel}>Email Address</label>
-            <input
-                type='email'
-                name='email'
-                placeholder='you@example.com'
-                className={style.formInput}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values['email']}
-            />
-            {formik.errors.email && formik.touched.email&& (
-            <p className={style.error}>
-                {formik.errors.email}
-            </p>
-            )
-            }
-        </div>
-        <div className={style.inputContainer}>
-            <label className={style.formLabel}>Password</label>
-            <input
-                type='password'
-                name='password'
-                placeholder='*********'
-                className={style.formInput}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values['password']}
-            />
-            {formik.errors["password"]&& formik.touched.password&&(
-            <p className={style.error}>
-                {formik.errors.password}
-            </p>
-            )}
-        </div>
-        <div className={style.inputContainer}>
-            <label className={style.formLabel}>RePassword</label>
-            <input
-                type='password'
-                name='rePassword'
-                placeholder='*********'
-                className={style.formInput}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values['rePassword']}
-            />
-            {formik.errors["rePassword"]&& formik.touched.rePassword&&(
-                <p className={style.error}>
-                    {formik.errors.rePassword}
-                </p>
-            )
-            }
-        </div>
+
+        {inputData.map((input)=><Input key={input.inputName} input={input} formik={formik} />)}
+
         {errorMessage && <p className={style.error}>{errorMessage}</p>}
         <div className={style.formFotter}>
             <button type='submit' className={style.button}>

@@ -9,14 +9,15 @@ import { getUsers} from '../lib/data-service';
 import { supabase } from "../lib/supabaseClient";
 import { useRouter } from 'next/navigation';
 import {useState} from "react"  
+import Input from '../compoments/Input/page';
 
 export default function SignIn() {
     const router = useRouter();
     const [errorMessage, setErrorMessage] = useState("")
 
-    console.log(getUsers)
+    //console.log(getUsers)
     async function submitSignIm(values) {
-        console.log(values)
+        //console.log(values)
     
         let { data, error } = await supabase.auth.signInWithPassword({
         email: values.email,
@@ -40,6 +41,11 @@ export default function SignIn() {
         },
         onSubmit:submitSignIm,
     })
+
+    const inputData = [
+        { label: "Email Address", type: "email", inputName: "email", placeholder: "you@example.com" },
+        { label: "Password", type: "password", inputName: "password", placeholder: "*********" },
+    ] 
 return <>
 <div className={style.form}>
     <div className={style.formHeader}>
@@ -50,30 +56,9 @@ return <>
         <p className={style.par}>Sign in to your account to continue</p>  
     </div>
     <form onSubmit={formik.handleSubmit} >
-        <div className={style.inputContainer}>
-            <label className={style.formLabel}>Email Address</label>
-            <input
-                type='email'
-                name='email'
-                placeholder='you@example.com'
-                className={style.formInput}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values['email']}
-            />
-        </div>
-        <div className={style.inputContainer}>
-            <label className={style.formLabel}>Password</label>
-            <input
-                type='password'
-                name='password'
-                placeholder='*********'
-                className={style.formInput}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values['password']}
-            />
-        </div>
+
+        {inputData.map((input)=><Input key={input.inputName} input={input} formik={formik} />)}
+
         {errorMessage && <p className={style.error}>{errorMessage}</p>}
         <div className={style.formFotter}>
             <button type='submit' className={style.button}>

@@ -40,7 +40,9 @@ body{
     padding: 20px;
     border-radius: 10px;
 }
-
+.inputContainer{
+    margin-bottom: 15px;
+}
 .formLabel{
    font-size: 18px;
    font-weight: 400;
@@ -73,16 +75,12 @@ body{
     background-color: rgb(2, 22, 77);
 }
 
-.inputContainer{
-    margin-bottom: 15px;
-}
+
 
 .navactionLink {
     color : rgb(24, 58, 152);
 }
-.error{
-    color: red;
-}
+
 
 @media screen and (max-width:560px){
     .form{
