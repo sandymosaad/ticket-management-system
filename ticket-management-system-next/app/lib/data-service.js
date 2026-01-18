@@ -1,3 +1,4 @@
+"use client"
 import { supabase } from "./supabaseClient";
 
 export async function getUsers() {
@@ -24,4 +25,10 @@ export async function addUserProfile(profile) {
   }
 
   return data;
+}
+
+export async function getLogedInUser() {
+    const { data: { user } } = await supabase.auth.getUser()
+      console.log(user)
+      return user;
 }

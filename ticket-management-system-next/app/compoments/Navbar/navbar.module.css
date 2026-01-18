@@ -1,0 +1,45 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+}
+
+.brand , .logoutButton{
+  display: flex;
+  align-items: center;
+}
+
+.navLink {
+  text-decoration: none;
+  color: black;
+}
+
+.user {
+  display: flex;
+  gap: 15px;
+}
+
+.navLink:hover , .userData:hover {
+  color:  rgb(24, 58, 152);
+}
+
+
+.logoutButton {
+  background-color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.logoutButton:hover{
+  background-color: rgb(232, 234, 234);
+}
+.icon{
+    color: rgb(192, 192, 192);
+    width: 28px;
+    padding: 5px;
+}

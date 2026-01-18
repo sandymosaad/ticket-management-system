@@ -30,6 +30,9 @@ export default function SignIn() {
             return;
         }
         console.log("User signed in successfully:", data);
+        
+        // const { data: { user } } = await supabase.auth.getUser()
+        // console.log(user)
         router.push('/')
 
     }
