@@ -92,7 +92,7 @@ export default  function SignUp() {
 
         {errorMessage && <p className={style.error}>{errorMessage}</p>}
         <div className={style.formFotter}>
-            <button type='submit' className={style.button}>
+            <button type='submit' className="button">
                 Create Account
             </button>
             <p>Already have an account? <Link href="/login" className={style.navactionLink}>sign in</Link></p>

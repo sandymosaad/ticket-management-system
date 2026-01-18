@@ -64,7 +64,7 @@ return <>
 
         {errorMessage && <p className={style.error}>{errorMessage}</p>}
         <div className={style.formFotter}>
-            <button type='submit' className={style.button}>
+            <button type='submit' className="button">
                 sign in
             </button>
             <p>Don't have an account?  <Link href="/signup" className={style.navactionLink}>Sign up</Link></p>

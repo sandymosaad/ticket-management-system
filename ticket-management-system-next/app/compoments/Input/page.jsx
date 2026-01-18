@@ -1,25 +1,27 @@
 import style from './input.module.css'
 export default  function Input({input, formik}) {
-    const { label, type, inputName, placeholder } = input;
+    const { label, type,inputType, inputName, placeholder } = input;
     return <>
     
-        <div className={style.inputContainer}> 
-            <label className={style.formLabel}>{label}</label>
+        {/* <div className={style.inputContainer}> 
+            <label className={style.formLabel}>{label} <span className={style.required}>*</span></label> */}
             <input
-                type={type}
+                type={inputType}
                 name={inputName}
                 placeholder={placeholder}
-                className={style.formInput}
+                className='formInput'
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values[inputName]}
             />
-            {formik.errors[inputName]&& formik.touched[inputName]&&(
+
+
+            {/* {formik.errors[inputName]&& formik.touched[inputName]&&(
             <p className="error">
                 {formik.errors[inputName]}
             </p>
             )
             }
-        </div>
+        </div> */}
     </>
 }

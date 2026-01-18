@@ -6,7 +6,7 @@ import {
   faCheckCircle,
   faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
-
+import Link from "next/link";
 export default function Home() {
   // const user = getLogedInUser();
   // console.log(user)
@@ -46,6 +46,7 @@ export default function Home() {
         ))
       }
   </div>
+<Link href="/tickets/add" className="button">Add Ticket</Link>
 
 
   

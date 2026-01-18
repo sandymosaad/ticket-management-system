@@ -1,7 +1,9 @@
-import React from 'react'
 
+import TicketForm from "../../compoments/TicketForm/TicketForm";
 export default function AddTicket() {
-  return (
-    <div>AddTicket</div>
-  )
+
+  return <>
+  <h1>add</h1>
+  <TicketForm/>
+    </>
 }
