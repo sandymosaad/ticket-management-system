@@ -11,6 +11,7 @@ import { supabase } from "../lib/supabaseClient";
 import { useRouter } from 'next/navigation';
 import {useState} from "react"
 import Input from '../compoments/Input/page';
+import InputForm from '../compoments/InputForm/InputForm';
 
 export default  function SignUp() {
     const router = useRouter();
@@ -72,10 +73,10 @@ export default  function SignUp() {
     })
 
     const inputData = [
-    { label: "Full Name", type: "text", inputName: "name", placeholder: "Sandy Mosaad" },
-    { label: "Email Address", type: "email", inputName: "email", placeholder: "you@example.com" },
-    { label: "Password", type: "password", inputName: "password", placeholder: "*********" },
-    { label: "RePassword", type: "password", inputName: "rePassword", placeholder: "*********" }
+    { label: "Full Name",type:"input", inputType: "text", inputName: "name", placeholder: "Sandy Mosaad" },
+    { label: "Email Address",type:"input", inputType: "email", inputName: "email", placeholder: "you@example.com" },
+    { label: "Password",type:"input", inputType: "password", inputName: "password", placeholder: "*********" },
+    { label: "RePassword",type:"input", inputType: "password", inputName: "rePassword", placeholder: "*********" }
 ]   
   return <>
   <div className={style.form}>
@@ -88,7 +89,7 @@ export default  function SignUp() {
     </div>
     <form onSubmit={formik.handleSubmit} >
 
-        {inputData.map((input)=><Input key={input.inputName} input={input} formik={formik} />)}
+        {inputData.map((input)=><InputForm key={input.inputName} input={input} formik={formik} />)}
 
         {errorMessage && <p className={style.error}>{errorMessage}</p>}
         <div className={style.formFotter}>

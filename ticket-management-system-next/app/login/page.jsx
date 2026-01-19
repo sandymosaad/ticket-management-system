@@ -10,6 +10,7 @@ import { supabase } from "../lib/supabaseClient";
 import { useRouter } from 'next/navigation';
 import {useState} from "react"  
 import Input from '../compoments/Input/page';
+import InputForm from '../compoments/InputForm/InputForm';
 
 export default function SignIn() {
     const router = useRouter();
@@ -46,8 +47,8 @@ export default function SignIn() {
     })
 
     const inputData = [
-        { label: "Email Address", type: "email", inputName: "email", placeholder: "you@example.com" },
-        { label: "Password", type: "password", inputName: "password", placeholder: "*********" },
+        { label: "Email Address", type:"input", inputype: "email", inputName: "email", placeholder: "you@example.com" },
+        { label: "Password", type:"input", inputype: "password", inputName: "password", placeholder: "*********" },
     ] 
 return <>
 <div className={style.form}>
@@ -60,7 +61,7 @@ return <>
     </div>
     <form onSubmit={formik.handleSubmit} >
 
-        {inputData.map((input)=><Input key={input.inputName} input={input} formik={formik} />)}
+        {inputData.map((input)=><InputForm key={input.inputName} input={input} formik={formik} />)}
 
         {errorMessage && <p className={style.error}>{errorMessage}</p>}
         <div className={style.formFotter}>

@@ -2,6 +2,8 @@
 import { useFormik } from "formik";
 import InputForm from "../InputForm/InputForm"
 import style from "./ticketForm.module.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function TicketForm() {
 
@@ -25,7 +27,12 @@ export default function TicketForm() {
   return <>
     <div className='form'>
       <form onSubmit={formik.handleSubmit} >
-
+          <h1 className={style.formHeader}>
+            <span className='iconSpan'>
+                <FontAwesomeIcon icon={faPlus} className='icon'/>
+            </span>  
+             Add New Ticket
+          </h1>
           {inputData.map((input)=>
           
           <InputForm 
@@ -36,10 +43,10 @@ export default function TicketForm() {
 
           {/* {errorMessage && <p className={style.error}>{errorMessage}</p>} */}
           <div className={style.formFotter}>
-              <button type='submit' className="button">
+              <button type='submit' className={`${style.button} ${'button'}`}>
                  Add Ticket
               </button>
-              <button  className="button">
+              <button  className={`${style.button} ${style.cancelButton} ${'button'}`}>
                 Cancel
               </button>
           </div>
