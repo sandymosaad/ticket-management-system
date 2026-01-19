@@ -7,7 +7,6 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import  * as Yup from "yup";
 import { addTicket } from "../../lib/data-service";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 export default function TicketForm() {
       const router = useRouter();
@@ -16,7 +15,7 @@ export default function TicketForm() {
         //console.log(values)
 
         const newTicket = await addTicket(values);
-        //console.log(newTicket)
+        console.log(newTicket)
         if(newTicket){
             router.push(`/tickets/${newTicket.id}`);
         }else{

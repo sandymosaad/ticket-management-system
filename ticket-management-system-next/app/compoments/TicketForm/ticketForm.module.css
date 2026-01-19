@@ -22,3 +22,10 @@
 .cancelButton:hover {
     background-color: rgb(163, 164, 165);
 }
+
+
+@media screen and (max-width:560px){
+    .form{
+        width: 80%;
+    }
+}

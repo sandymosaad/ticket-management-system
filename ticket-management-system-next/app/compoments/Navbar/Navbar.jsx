@@ -16,12 +16,13 @@ export default async function Navbar() {
           <Image 
           src={logo}
           alt="logo"
+          className={style.logo}
           width={70}
           quality={100}
           />
           <Link className={style.navLink} href="/">
             <h3>Ticket Management</h3>
-            <p>Software Company Portal</p>
+            <p className={style.branPara}>Software Company Portal</p>
           </Link>
       </div>
       

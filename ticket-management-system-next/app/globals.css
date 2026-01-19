@@ -84,6 +84,18 @@ body{
     color: red;
 }
 
+@media screen and (max-width: 560px) {
+    .form {
+        width: 80%;
+    }
+}
+@media screen and (width: 320px) {
+    .form {
+        width: 95%;
+    }
+}
+
+
 /*------------------------------------------------------------------------------------------------------------*/
 
 /*icons*/
