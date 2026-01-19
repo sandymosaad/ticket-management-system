@@ -7,10 +7,10 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import  * as Yup from "yup";
 import { addTicket } from "../../lib/data-service";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function TicketForm() {
       const router = useRouter();
-
 
      async function submitTicket(values){
         //console.log(values)
@@ -23,7 +23,10 @@ export default function TicketForm() {
           console.log("Faild to add ticket ")
         }
       }
-
+      function handleCancellation(e){
+        e.preventDefault();
+        router.push(`/`)
+      }
       const validationSchema = Yup.object({
           title:Yup.string()
           .required("Title is required"),
@@ -71,7 +74,7 @@ export default function TicketForm() {
                 <button type='submit' className={`${style.button} ${'button'}`}>
                   Add Ticket
                 </button>
-                <button  className={`${style.button} ${style.cancelButton} ${'button'}`}>
+                <button onClick={handleCancellation} className={`${style.button} ${style.cancelButton} ${'button'}`}>
                   Cancel
                 </button>
             </div>
