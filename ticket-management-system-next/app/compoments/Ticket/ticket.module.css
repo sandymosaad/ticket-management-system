@@ -1,0 +1,72 @@
+.topCardTicketDetails , .displayFlex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topCardTicketDetails{
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 20px;
+}
+.buttonContainer {
+    margin: 5px;
+    padding: 15px;
+    display: flex;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.iconDetails {
+    width: 12px;
+}
+
+.editButton{
+    color: blue;
+} 
+
+.deleteButton{
+    color: rgb(255, 0, 0);
+} 
+
+.editButton:hover{
+     background-color: rgb(232, 243, 250);
+} 
+
+.deleteButton:hover{
+     background-color: rgb(251, 235, 235);
+} 
+
+
+.descriptionContainer , .statusContainer {
+    padding: 20px;
+}
+
+.status{
+    padding: 9px;
+    margin: 10px 0;
+    width: fit-content;
+    border-radius: 9px;
+}
+
+.openStatus{
+    background-color:rgb(249, 249, 169) ;
+}
+.closedStatus{
+     background-color:rgb(236, 159, 255) ;
+}
+.inProgressStatus{
+     background-color:rgb(169, 249, 169) ;
+}
+.resolvedStatus{
+     background-color: rgb(230, 230, 230);
+}
+
+
+
+.paraDetails{
+    margin: 10px 0;
+    color:  #5f5f5f;
+}

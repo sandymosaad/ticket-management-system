@@ -47,3 +47,19 @@ export async function addTicket(ticket) {
   //console.log(` data :${data}`)
   return data;
 }
+
+export async function getTicket(id) {
+  const { data, error } = await supabase
+    .from("tickets")
+    .select('*')
+    .eq('id', id)
+    .single();
+
+  if (error) {
+    console.error("Error fetching ticket:", error);
+    return null;
+  }
+   //console.log(data)
+  return data;
+
+}

@@ -6,12 +6,15 @@ import style from "./backLink.module.css"
 export default function BackLink(){
     return<>
     
-    <div className={style.backLink} >
-    <Link href={'/'} className={style.color}>
-    <FontAwesomeIcon icon={faArrowLeft} className={style.color} />
+    <Link href={'/'} className={`${style.color} ${style.backLink}`}>
+      <FontAwesomeIcon 
+        icon={faArrowLeft} 
+        className={`${style.color} ${style.icon}`} 
+        size="sm"
+        />
+
       Back to Tickets 
     </Link>
 
-  </div>
     </>
 }
