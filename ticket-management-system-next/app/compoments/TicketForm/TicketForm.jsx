@@ -5,7 +5,7 @@ import style from "./ticketForm.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import  * as Yup from "yup";
-import { addTicket } from "../../lib/data-service";
+import { addTicket , getLogedInUser} from "../../lib/data-service";
 import { useRouter } from "next/navigation";
 
 export default function TicketForm() {
@@ -13,11 +13,19 @@ export default function TicketForm() {
 
      async function submitTicket(values){
         //console.log(values)
+        const user = await getLogedInUser();
+       // console.log(user.id)
 
-        const newTicket = await addTicket(values);
-        console.log(newTicket)
-        if(newTicket){
-            router.push(`/tickets/${newTicket.id}`);
+        const newTicket ={
+          description:values.description,
+          status:values.status,
+          title:values.title,
+          userId:user.id
+        }
+        const addNewTicket = await addTicket(newTicket);
+        console.log(addNewTicket)
+        if(addNewTicket){
+            router.push(`/tickets/${addNewTicket.id}`);
         }else{
           console.log("Faild to add ticket ")
         }

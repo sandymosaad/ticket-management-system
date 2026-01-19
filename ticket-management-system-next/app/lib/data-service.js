@@ -33,8 +33,6 @@ export async function getLogedInUser() {
       return user;
 }
 
-
-
 export async function addTicket(ticket) {
   const {data, error} = await supabase
   .from("tickets")
