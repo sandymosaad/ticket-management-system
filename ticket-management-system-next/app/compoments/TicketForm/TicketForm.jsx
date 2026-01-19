@@ -5,17 +5,32 @@ import style from "./ticketForm.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import  * as Yup from "yup";
-export default function TicketForm() {
+import { addTicket } from "../../lib/data-service";
+import { useRouter } from "next/navigation";
 
-      function submitTicket(values){
-        console.log(values)
+export default function TicketForm() {
+      const router = useRouter();
+
+
+     async function submitTicket(values){
+        //console.log(values)
+
+        const newTicket = await addTicket(values);
+        //console.log(newTicket)
+        if(newTicket){
+            router.push(`/tickets/${newTicket.id}`);
+        }else{
+          console.log("Faild to add ticket ")
+        }
       }
 
       const validationSchema = Yup.object({
           title:Yup.string()
           .required("Title is required"),
+
           description:Yup.string()
           .required("Description is required"),
+
             status:Yup.string()
           .required("status is required"),
       })

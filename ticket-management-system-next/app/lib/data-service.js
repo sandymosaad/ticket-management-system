@@ -32,3 +32,20 @@ export async function getLogedInUser() {
       console.log(user)
       return user;
 }
+
+
+
+export async function addTicket(ticket) {
+  const {data, error} = await supabase
+  .from("tickets")
+  .insert([ticket])
+  .select()
+  .single();
+
+  if (error){
+    console.error("Add ticket error:", error);
+    throw new Error(error.message);
+  }
+  //console.log(` data :${data}`)
+  return data;
+}
