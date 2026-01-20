@@ -8,6 +8,6 @@ export default function AddTicket() {
 
   return <>
     <BackLink/>
-    <TicketForm/>
+    <TicketForm action="Add"/>
     </>
 }

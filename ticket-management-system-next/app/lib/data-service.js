@@ -61,5 +61,10 @@ export async function getTicket(id) {
   }
    //console.log(data)
   return data;
-
+}
+export async function updateTicket(id , values){
+    const { data, error } = await supabase
+    .from("tickets")
+    .update({'title':values.title, 'status':values.status , 'description': values.description})
+    .eq('id', id)
 }
