@@ -1,22 +1,32 @@
 "use client";
 
-
-
 import style from "./ticket.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons"
 import {getTicket} from "../../lib/data-service"
+import { useEffect, useState } from "react";
 
-export default async function Ticket({id}){
-     const ticket = await getTicket(id)
-    //console.log(ticket)
+export default function Ticket({id}){
+  
+  const [ticket, setTicket] = useState({})
+
+  useEffect(() => {
+     getTicket(id).then((data) => {
+      setTicket(data)
+     })
+   }, [])
+
    return <> 
      <div className="form">
 
     <div className={style.topCardTicketDetails}>
       <div>
         <h1>{ticket.title}</h1>
-        <p className={style.paraDetails}>{ticket['created_at']}</p>
+          <p className={style.paraDetails}>
+            Created on{" "}
+            { new Date(ticket.created_at).toLocaleString() }
+          </p>
+
       </div>
       <div className={style.displayFlex}>
           <button className={`${style.buttonContainer} ${style.editButton}`}>

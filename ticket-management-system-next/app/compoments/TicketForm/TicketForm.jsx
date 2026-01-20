@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import  * as Yup from "yup";
 import { addTicket , getLogedInUser} from "../../lib/data-service";
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 
 export default function TicketForm() {
       const router = useRouter();
@@ -24,12 +24,18 @@ export default function TicketForm() {
         }
         const addNewTicket = await addTicket(newTicket);
         console.log(addNewTicket)
-        if(addNewTicket){
-            router.push(`/tickets/${addNewTicket.id}`);
-        }else{
+        if (addNewTicket?.id) {
+           //console.log(addNewTicket.id)
+          router.push(`/tickets/${addNewTicket.id}`);
+          //console.log(`/tickets/${addNewTicket.id}`)
+
+         }
+        else{
           console.log("Faild to add ticket ")
         }
       }
+
+      
       function handleCancellation(e){
         e.preventDefault();
         router.push(`/`)

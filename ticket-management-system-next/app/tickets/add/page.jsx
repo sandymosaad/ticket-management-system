@@ -7,7 +7,7 @@ import TicketForm from "../../compoments/TicketForm/TicketForm";
 export default function AddTicket() {
 
   return <>
-  <BackLink/>
-  <TicketForm/>
+    <BackLink/>
+    <TicketForm/>
     </>
 }
