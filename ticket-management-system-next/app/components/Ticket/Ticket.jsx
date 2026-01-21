@@ -14,7 +14,7 @@ export default function Ticket({id}){
      getTicket(id).then((data) => {
       setTicket(data)
      })
-   }, [])
+   }, [id])
 
    return <> 
      <div className="form">

@@ -1,11 +1,10 @@
-import Spinner from "../../compoments/Spinner/Spinner";
-import style from "./ticketDetails.module.css";
+import Spinner from "../../components/Spinner/Spinner";
 
 export default function Loading() {
   return (
-      <div  className={style.spinnerContainer}>
+      <div  className="spinnerContainer">
         <Spinner/>
-        <p className={style.loadingText}>Loading ticket data...</p>
+        <p className="loadingText">Loading ticket data...</p>
       </div>
   );
 }
