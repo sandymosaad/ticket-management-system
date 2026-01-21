@@ -9,7 +9,7 @@ import { getUsers} from '../lib/data-service';
 import { supabase } from "../lib/supabaseClient";
 import { useRouter } from 'next/navigation';
 import {useState} from "react"  
-import Input from '../compoments/Input/page';
+import Input from '../compoments/Input/Input';
 
 export default function SignIn() {
     const router = useRouter();
