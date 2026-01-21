@@ -10,7 +10,7 @@ import { addUserProfile } from '../lib/data-service';
 import { supabase } from "../lib/supabaseClient";
 import { useRouter } from 'next/navigation';
 import {useState} from "react"
-import Input from '../compoments/Input/page';
+import Input from '../compoments/Input/Input';
 import InputForm from '../compoments/InputForm/InputForm';
 
 export default  function SignUp() {
