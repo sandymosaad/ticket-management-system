@@ -1,5 +1,6 @@
 import BackLink from "../../components/BackLink/backLink";
 import Ticket from "../../components/Ticket/Ticket";
+import { Suspense } from 'react';
 
 export default async function TicketDetails({ params }) {
   const resolvedParams = await params; 
@@ -8,7 +9,11 @@ export default async function TicketDetails({ params }) {
 
   return <>
   <BackLink/>
-  <Ticket id={id}/>
+   <Suspense fallback={<p>Loading...</p>}>
+   
+     <Ticket id={id}/>
+
+   </Suspense>
 
 
   </>

@@ -46,8 +46,9 @@ export default function SignIn() {
     })
 
     const inputData = [
-        { label: "Email Address", type:"input", inputype: "email", inputName: "email", placeholder: "you@example.com" },
-        { label: "Password", type:"input", inputype: "password", inputName: "password", placeholder: "*********" },
+        { label: "Email Address", type:"input", inputType: "email", inputName: "email", placeholder: "you@example.com" },
+        { label: "Password",type:"input", inputType: "password", inputName: "password", placeholder: "*********" },
+
     ] 
 return <>
 <div className={style.form}>
@@ -62,7 +63,7 @@ return <>
 
         {inputData.map((input)=><InputForm key={input.inputName} input={input} formik={formik} />)}
 
-        {errorMessage && <p className={style.error}>{errorMessage}</p>}
+        {errorMessage && <p className="error">{errorMessage}</p>}
         <div className={style.formFotter}>
             <button type='submit' className="button">
                 sign in

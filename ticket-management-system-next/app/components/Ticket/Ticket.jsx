@@ -48,14 +48,13 @@ export default function Ticket({id}){
       <div>
         <div className={style.dataContainer}>
           <h4>status</h4>
-          <p  className={`
-            ${style.status} 
-            ${ticket.status === "In Progress" ?   style.inProgressStatus :"" }
-            ${ticket.status === "Closed" ?  style.closedStatus:""} 
-            ${ticket.status === "Open" ?  style.openStatus :""} 
-            ${ticket.status === "Resolved" ?  style.resolvedStatus:""} 
-
-            `}>
+          <p className={`
+                  ${"status"} 
+                  ${ticket.status === "In Progress" ? "inProgressStatus" :"" }
+                  ${ticket.status === "Closed" ?  "closedStatus":""} 
+                  ${ticket.status === "Open" ?  "openStatus" :""} 
+                  ${ticket.status === "Resolved" ?  "resolvedStatus":""} 
+                `}>
             {ticket.status}
           </p>
         </div>

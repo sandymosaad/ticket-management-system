@@ -1,0 +1,68 @@
+'use client'
+import { useEffect, useState } from 'react';
+import {getTickets} from '../../lib/data-service';
+import Link from "next/link";
+import style from "./allTickets.module.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye} from "@fortawesome/free-solid-svg-icons"
+export default  function AllTickets() {
+const [tickets, setTickets] = useState({});
+
+useEffect(()=>{
+  getTickets().then((data)=>{
+    setTickets(data)
+  })
+},[])
+
+
+  return <>
+      <div className={style.tableContainer}>  
+        <div className={style.header}>
+          <h1>All Ticket</h1>
+          <Link href="/tickets/add" className={`${"button"} ${style.addTicketBtn}`}>Add Ticket</Link>
+        </div>
+       <table className={style.table}>
+        <thead >
+          <tr  className={`${style.tableHeader} ${style.row}`}>
+            <th className={style.cell}>Title</th>
+            <th className={style.cell}>Description</th>
+            <th className={style.cell}>Status</th>
+            <th className={style.cell}>Created </th>
+            <th className={style.cell}>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tickets?.length > 0 ? tickets.map((ticket) => {
+            return (
+              <tr key={ticket.id} className={style.row}>
+                <td className={style.cell}>{ticket.title}</td>
+                <td className={style.cell}>{ticket.description}</td>
+                <td 
+                className={`${style.cell} `}>
+                  <span   className={`
+                  ${"status"} 
+                  ${ticket.status === "In Progress" ? "inProgressStatus" :"" }
+                  ${ticket.status === "Closed" ?  "closedStatus":""} 
+                  ${ticket.status === "Open" ?  "openStatus" :""} 
+                  ${ticket.status === "Resolved" ?  "resolvedStatus":""} 
+                `}>
+                 {ticket.status}
+                  </span>
+                </td>
+                <td className={style.cell}>{new Date(ticket.created_at).toDateString()}</td>
+                <td className={`${style.cell} ${style.actionContainer}`} >
+                  <Link href={`/tickets/${ticket.id}` } className={style.action}>
+                  <FontAwesomeIcon icon={faEye} className={style.iconDetails} />
+                    view 
+                  </Link>
+                </td>
+              </tr>
+            );
+          }): <tr><td colSpan={5}>No tickets found</td></tr>}
+        </tbody>
+      </table>
+
+      </div>
+  </>
+    
+}

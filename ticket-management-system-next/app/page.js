@@ -7,9 +7,9 @@ import {
   faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import AllTickets from "./components/AllTickets/AllTickets";
 export default function Home() {
-  // const user = getLogedInUser();
-  // console.log(user)
+
 
  const cardsData = [
   {
@@ -46,9 +46,6 @@ export default function Home() {
         ))
       }
   </div>
-<Link href="/tickets/add" className="button">Add Ticket</Link>
-
-
-  
-  </>
+  <AllTickets/>
+</>
 }

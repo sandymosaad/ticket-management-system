@@ -78,3 +78,15 @@ export async function deleteTicket(id){
   }
 
 }
+export async function getTickets() {
+  const { data, error } = await supabase
+    .from("tickets")
+    .select("*");
+
+  if (error) {
+    console.error("Error fetching tickets:", error);
+    throw new Error(error.message);
+  }
+
+  return data;
+}
