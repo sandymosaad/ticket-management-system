@@ -56,7 +56,7 @@ export async function getTicket(id) {
     .single();
 
   if (error) {
-    console.error("Error fetching ticket:", error);
+    console.log("Error fetching ticket:", error);
     return null;
   }
    //console.log(data)
@@ -67,4 +67,14 @@ export async function updateTicket(id , values){
     .from("tickets")
     .update({'title':values.title, 'status':values.status , 'description': values.description , 'summary':values.summary})
     .eq('id', id)
+}
+export async function deleteTicket(id){
+    const { error } = await supabase
+    .from("tickets")
+    .delete()
+    .eq('id', id);
+    if (error) {
+    console.error("Error deleteing ticket:", error);
+  }
+
 }
