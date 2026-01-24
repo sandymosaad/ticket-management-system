@@ -90,3 +90,21 @@ export async function getTickets() {
 
   return data;
 }
+
+
+
+export async function getTotalTicketsCount() {
+  const tickets = await getTickets();
+  return tickets.length;
+}
+
+
+export async function numByStatus(status) {
+  const { data, error } = await supabase
+    .from("tickets")
+    .select("id")
+    .eq("status", status);
+
+  if (error) throw new Error;
+  return data.length;
+}
