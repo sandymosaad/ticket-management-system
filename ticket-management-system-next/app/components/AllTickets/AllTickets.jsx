@@ -4,18 +4,24 @@ import {getTickets} from '../../lib/data-service';
 import Link from "next/link";
 import style from "./allTickets.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye} from "@fortawesome/free-solid-svg-icons"
+import { faEye} from "@fortawesome/free-solid-svg-icons";
+import Spinner from "../Spinner/Spinner"
+
+
 export default  function AllTickets() {
 const [tickets, setTickets] = useState({});
+const [loading, setLoading] = useState(true);
 
 useEffect(()=>{
   getTickets().then((data)=>{
+    setLoading(false)
     setTickets(data)
   })
 },[])
 
 
   return <>
+    {loading ? <Spinner/>:
       <div className={style.tableContainer}>  
         <div className={style.header}>
           <h1>All Ticket</h1>
@@ -31,6 +37,7 @@ useEffect(()=>{
             <th className={style.cell}>Action</th>
           </tr>
         </thead>
+
         <tbody>
           {tickets?.length > 0 ? tickets.map((ticket) => {
             return (
@@ -62,7 +69,7 @@ useEffect(()=>{
         </tbody>
       </table>
 
-      </div>
+      </div>}
   </>
     
 }

@@ -1,6 +1,9 @@
 import style from "./spinner.module.css"
 function Spinner() {
-  return <span className={style.loader}></span>
+
+  return <div className={style.SpinnerContainer}>
+    <span className={style.loader}></span>
+  </div> 
 }
 
 export default Spinner;
