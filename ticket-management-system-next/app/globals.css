@@ -20,19 +20,49 @@ body{
 }
 /*------------------------------------------------------------------------------------------------------------*/
 /*cards*/
-.cards{
+/* .cards{
   display: flex;
   text-align: center;
   justify-content: space-around;
 }
-
+@media screen and (max-width:768px){
+    .cards{
+        display: flex;
+        flex-direction: row;    
+        gap: 10px;    
+        width: 50%;
+        flex-wrap: wrap;    
+    }
+}
 @media screen and (max-width:560px){
     .cards{
         display: flex;
         flex-direction: column;
-        text-align: center;
+        width: 100%;
     }
+} */
+ .cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+   flex-wrap: wrap;
 }
+
+/* Tablet */
+@media screen and (max-width: 768px) {
+  .cards {
+    justify-content: center;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 560px) {
+  .cards {
+    flex-direction: column;
+  }
+}
+
+
 /*------------------------------------------------------------------------------------------------------------*/
 /*buttons*/
 .button {

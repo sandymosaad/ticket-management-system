@@ -8,7 +8,7 @@ return <>
     <div className={style.card}>
         <div className={style.cardBody}>
             <h3>{card.title}</h3>
-            <p>{card.numbersOfTickets}</p>
+            <p>{card.numberOfTickets}</p>
         </div>
         <span className={style.iconSpan}>
             <FontAwesomeIcon icon={card.icon} size="lg" className={style.icon} />      

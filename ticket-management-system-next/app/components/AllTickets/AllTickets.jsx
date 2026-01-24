@@ -26,7 +26,7 @@ useEffect(()=>{
           <tr  className={`${style.tableHeader} ${style.row}`}>
             <th className={style.cell}>Title</th>
             <th className={style.cell}>Description</th>
-            <th className={style.cell}>Status</th>
+            <th className={style.cell} >Status</th>
             <th className={style.cell}>Created </th>
             <th className={style.cell}>Action</th>
           </tr>
@@ -38,7 +38,7 @@ useEffect(()=>{
                 <td className={style.cell}>{ticket.title}</td>
                 <td className={style.cell}>{ticket.description}</td>
                 <td 
-                className={`${style.cell} `}>
+                className={`${style.cell} ${style.statusCell}`}>
                   <span   className={`
                   ${"status"} 
                   ${ticket.status === "In Progress" ? "inProgressStatus" :"" }

@@ -6,7 +6,8 @@ import {
   faCheckCircle,
   faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
+import { Suspense } from 'react';
+
 import AllTickets from "./components/AllTickets/AllTickets";
 export default function Home() {
 
@@ -14,27 +15,27 @@ export default function Home() {
  const cardsData = [
   {
     title: "Total Tickets",
-    numbersOfTickets: "4",
+    numberOfTickets: "4",
     icon: faTicket,
   },
   {
     title: "Open",
-    numbersOfTickets: "2",
+    numberOfTickets: "2",
     icon: faFolderOpen,
   },
   {
     title: "In Progress",
-    numbersOfTickets: "1",
+    numberOfTickets: "1",
     icon: faSpinner,
   },
   {
     title: "Resolved",
-    numbersOfTickets: "0",
+    numberOfTickets: "0",
     icon: faCheckCircle,
   },
   {
     title: "Closed",
-    numbersOfTickets: "1",
+    numberOfTickets: "1",
     icon: faTimesCircle,
   },
 ];
@@ -46,6 +47,8 @@ export default function Home() {
         ))
       }
   </div>
-  <AllTickets/>
+         <Suspense fallback={<p>Loading...</p>}>
+          <AllTickets/>
+          </Suspense>
 </>
 }
