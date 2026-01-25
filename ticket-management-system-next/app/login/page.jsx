@@ -5,7 +5,6 @@ import style from "../auth.module.css"
 import  Link  from 'next/link';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
-import { getUsers} from '../lib/data-service';
 import { supabase } from "../lib/supabaseClient";
 import { useRouter } from 'next/navigation';
 import {useState} from "react"  
@@ -25,7 +24,7 @@ export default function SignIn() {
         });
 
         if(error){
-            console.error("Error signing in:", error);
+           // console.error("Error signing in:", error);
             setErrorMessage(error.message);
             return;
         }

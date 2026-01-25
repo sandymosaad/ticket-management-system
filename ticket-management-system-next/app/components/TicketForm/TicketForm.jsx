@@ -75,7 +75,7 @@ export default function TicketForm({action , idEdit}) {
       
       function handleCancellation(e){
         e.preventDefault();
-        router.push(`/`)
+        router.push(`/tickets`)
       }
 
 

@@ -9,10 +9,12 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body >
-        <Navbar/>
+        <Navbar />
         <div className="container">
                   {children}
         </div>
