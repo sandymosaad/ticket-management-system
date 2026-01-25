@@ -33,7 +33,7 @@ export default function SignIn() {
         
         // const { data: { user } } = await supabase.auth.getUser()
         // console.log(user)
-        router.push('/')
+        router.push('/tickets')
 
     }
 

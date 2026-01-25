@@ -28,6 +28,47 @@
     color: white;
 }
 
+
+.iconSpanLandingPage{
+    padding: 10px;
+    align-items: center;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+
+.ticketIcon{
+    background-color: rgb(188, 226, 255);
+}
+.ticketIconColor{
+        color: rgb(1, 4, 159);
+
+}
+
+.statusIcon{
+     background-color:rgb(208, 247, 208) ;
+}
+.statusIconColor{
+    color:rgb(1, 122, 1) ;
+}
+.analyticsIcon{
+     background-color: rgb(247, 218, 253);
+}
+.analyticsIconColor{
+    color: rgb(150, 2, 179);
+}
+.teamIcon{
+    background-color: rgb(252, 213, 151);
+}
+.teamIconColor{
+   color: rgb(155, 96, 2);
+}
+
+.cardTextBody{
+    color: rgb(108, 108, 108);
+    font-weight: 400;
+}
+
 @media screen and (max-width: 768px) {
   .card {
     width: 50%;
