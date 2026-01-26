@@ -7,7 +7,7 @@ const router =useRouter()
 async function handleDelete() {
   await deleteTicket(id);
   setShowDeleteModal(false)
-  router.push("/");
+  router.push("/tickets");
 }
 
     return<>

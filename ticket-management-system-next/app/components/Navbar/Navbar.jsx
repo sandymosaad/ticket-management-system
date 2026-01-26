@@ -55,6 +55,9 @@ export default function Navbar() {
 
       {userEmail ? (
         <div className={style.user}>
+          <Link  href="/tickets" className={style.dashboard}>
+            Dashboard
+          </Link>
           <div className={style.userData}>
             <p>Admin User</p>
             <p>{userEmail}</p>
