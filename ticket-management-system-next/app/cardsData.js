@@ -5,7 +5,12 @@ import {
   faCheckCircle,
   faTimesCircle,
   faChartBar,
-  faUsers 
+  faUsers,
+  faCircleDot,
+  faInbox,
+  faEnvelopeOpen ,
+  faArrowsRotate ,
+  faCircle ,
 } from "@fortawesome/free-solid-svg-icons";
 
 const cardsData = [
@@ -15,11 +20,11 @@ const cardsData = [
   },
   {
     title: "Open",
-    icon: faFolderOpen,
+    icon: faCircle,
   },
   {
     title: "In Progress",
-    icon: faSpinner,
+    icon: faArrowsRotate,
   },
   {
     title: "Resolved",

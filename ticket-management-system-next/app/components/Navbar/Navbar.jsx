@@ -12,30 +12,52 @@ import { supabase } from "../../lib/supabaseClient";
 
 export default function Navbar() {
   const router = useRouter();
-  const [userEmail, setUserEmail] = useState(null);
+   const [userEmail, setUserEmail] = useState(null);
 
-  useEffect(() => {
-    const session = supabase.auth.getSession().then(({ data }) => {
-      //console.log(data.session.user.email)
-      if (data?.session?.user) {
-        setUserEmail(data.session.user.email);
-      }else{
-        router.push("/");
-      }
-    });
+  // useEffect(() => {
+  //   const session = supabase.auth.getSession().then(({ data }) => {
+  //     //console.log(data.session.user.email)
+  //     if (data?.session?.user) {
+  //       setUserEmail(data.session.user.email);
+  //     }else{
+  //       router.push("/login");
+  //     }
+  //   });
 
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (session?.user) {
-        setUserEmail(session.user.email);
-      } else {
-        router.push("/");  
-        setUserEmail(null);
-      }
+  //   const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+  //     if (session?.user) {
+  //       setUserEmail(session.user.email);
+  //     } else {
+  //       setUserEmail(null);
+  //       router.push("/login");  
+  //     }
 
-    });
+  //   });
 
-    return () => listener.subscription.unsubscribe();
-  }, []);
+  //   return () => listener.subscription.unsubscribe();
+  // }, []);
+
+  const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+  supabase.auth.getSession().then(({ data }) => {
+    if (data?.session?.user) {
+      setUserEmail(data.session.user.email);
+    }
+    setLoading(false); // finish loading regardless
+  });
+
+  const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+    if (session?.user) {
+      setUserEmail(session.user.email);
+    } else {
+      setUserEmail(null);
+      router.push("/login");
+    }
+  });
+
+  return () => listener.subscription.unsubscribe();
+}, []);
 
   async function handleLogout() {
     const { error } = await supabase.auth.signOut();
@@ -43,13 +65,15 @@ export default function Navbar() {
     setUserEmail(null);
     router.push("/login");  
   }
+
+  if (loading) return null;
   return (
     <nav className={style.nav}>
       <div className={style.brand}>
         <Image src={logo} alt="logo" className={style.logo} width={70} quality={100} />
         <Link className={style.navLink} href="/">
           <h3>Ticket Management</h3>
-          <p className={style.branPara}>Software Company Portal</p>
+          <p className={style.brandPara}>Software Company Portal</p>
         </Link>
       </div>
 

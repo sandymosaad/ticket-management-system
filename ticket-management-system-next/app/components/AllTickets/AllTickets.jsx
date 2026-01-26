@@ -6,9 +6,10 @@ import style from "./allTickets.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye} from "@fortawesome/free-solid-svg-icons";
 import Spinner from "../Spinner/Spinner"
-
+import { useRouter } from 'next/navigation';
 
 export default  function AllTickets() {
+const router =useRouter();
 const [tickets, setTickets] = useState({});
 const [loading, setLoading] = useState(true);
 
@@ -41,7 +42,12 @@ useEffect(()=>{
         <tbody>
           {tickets?.length > 0 ? tickets.map((ticket) => {
             return (
-              <tr key={ticket.id} className={style.row}>
+
+              <tr key={ticket.id} className={style.row} onClick={()=>{
+                  router.push(`/tickets/${ticket.id}`)
+                }
+
+                }>
                 <td className={style.cell}>{ticket.title}</td>
                 <td className={style.cell}>{ticket.description}</td>
                 <td 
@@ -57,13 +63,22 @@ useEffect(()=>{
                   </span>
                 </td>
                 <td className={style.cell}>{new Date(ticket.created_at).toDateString()}</td>
-                <td className={`${style.cell} ${style.actionContainer}`} >
-                  <Link href={`/tickets/${ticket.id}` } className={style.action}>
-                  <FontAwesomeIcon icon={faEye} className={style.iconDetails} />
-                    view 
-                  </Link>
+
+                <td className={`${style.cell}`} >
+                  {/* <Link href={`/tickets/${ticket.id}` } className={style.action}> */}
+                  <FontAwesomeIcon icon={faEye} className={style.action} />
+                    
                 </td>
+                  {/* <Link href={`/tickets/${ticket.id}` } >
+
+                    <td className={`${style.cell}`} >
+                  <FontAwesomeIcon icon={faEye} className={` ${style.action} `} />
+                  </td>
+
+                  </Link> */}
+
               </tr>
+
             );
           }): <tr><td colSpan={5}>No tickets found</td></tr>}
         </tbody>

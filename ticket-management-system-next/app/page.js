@@ -14,10 +14,10 @@ export default function Home(){
         <Link href={'/login'} className={` ${style.landingPageButton} ${"button"}`} >Get Started Free</Link>
     </div>
 
-<div className={style.cards}>
- {staticCardsDataForLandingPage.map((card)=>{
-  return <Card key={card.title} card={card} landingPage={true} />
- })}
-</div>
+    <div className={style.cards}>
+        {staticCardsDataForLandingPage.map((card)=>{
+        return <Card key={card.title} card={card} landingPage={true} />
+        })}
+    </div>
     </>
 }

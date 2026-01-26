@@ -5,7 +5,6 @@ import style from "./ticketForm.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faSave} from "@fortawesome/free-solid-svg-icons";
-
 import  * as Yup from "yup";
 import { addTicket , getLogedInUser , getTicket, updateTicket} from "../../lib/data-service";
 import { useRouter } from 'next/navigation';
@@ -75,7 +74,12 @@ export default function TicketForm({action , idEdit}) {
       
       function handleCancellation(e){
         e.preventDefault();
-        router.push(`/tickets`)
+        if(action === 'Add'){
+          router.push(`/tickets`)
+        }else if (action === 'Edit'){
+            router.push(`/tickets/${idEdit}`)
+
+        }
       }
 
 
@@ -109,12 +113,11 @@ export default function TicketForm({action , idEdit}) {
       const summaryInput = { label: "Summary ", type: "textarea", inputName: "summary", placeholder: "Enter summary of the ticket" }
     return <>
       <div className='form'>
+        
         <form onSubmit={formik.handleSubmit} >
           {action==="Add" && <>
             <h1 className={style.formHeader}>
-              <span className='iconSpan'>
-                  <FontAwesomeIcon icon={faPlus} className='icon'/>
-              </span>  
+            
               Add New Ticket
             </h1>
             </> }

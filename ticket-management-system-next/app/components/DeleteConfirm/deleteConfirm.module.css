@@ -27,7 +27,7 @@
 }
 .buttons button {
     border: none;
-    padding: 5px;
+    padding: 10px;
     border-radius: 4px; 
     cursor: pointer;
     color: white;
@@ -37,7 +37,13 @@
 .confirmButton{
     background-color: rgb(39, 3, 184);
 }
+.confirmButton:hover{
+    background-color: rgb(19, 2, 89);
+}
 
 .cancelButton{
-    background-color: rgb(223, 11, 11);
+ background-color: rgb(214, 215, 216);
+}
+.cancelButton:hover {
+    background-color: rgb(163, 164, 165);
 }

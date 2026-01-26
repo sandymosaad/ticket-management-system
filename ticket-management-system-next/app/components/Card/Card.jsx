@@ -26,7 +26,16 @@ export default function Card({card, landingPage}){
 
 return <>
     
-    <div className={style.card}>
+        <div 
+    className={`${style.card} 
+        ${card.title === "Total Tickets" ? style.allTickets :"" }
+        ${card.title === "In Progress" ? style.inProgressStatus :"" }
+        ${card.title === "Closed" ?  style.closedStatus:""} 
+        ${card.title === "Open" ?  style.openStatus :""} 
+        ${card.title === "Resolved" ?  style.resolvedStatus:""} 
+    `}
+>
+
         <div className={style.cardBody}>
 
         {landingPage? 
@@ -58,7 +67,15 @@ return <>
         </div>
         {landingPage?"":
         <span className={style.iconSpan}>
-            <FontAwesomeIcon icon={card.icon} size="lg" className={style.icon} />      
+            <FontAwesomeIcon icon={card.icon} size="lg"
+             className={`
+                ${card.title === "Total Tickets" ? style.allTicketsColor :"" }
+                ${card.title === "In Progress" ? style.inProgressStatusColor :"" }
+                ${card.title === "Closed" ?  style.closedStatusColor:""} 
+                ${card.title === "Open" ?  style.openStatusColor :""} 
+                ${card.title === "Resolved" ?  style.resolvedStatusColor:""} 
+             
+             `} />      
         </span>}
     </div>   
     </>

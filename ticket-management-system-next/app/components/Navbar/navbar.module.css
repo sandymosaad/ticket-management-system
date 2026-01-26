@@ -48,8 +48,8 @@
   text-decoration: none;
   color: black;
 }
-@media screen and (width: 320px) {
-.logo , .branPara{
+@media screen and (max-width: 540px) {
+ .navLink{
   display: none;
 }
 }

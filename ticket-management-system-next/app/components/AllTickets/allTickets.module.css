@@ -40,22 +40,19 @@
     white-space: nowrap;
 }
 .action{
-    display: flex;
+    /* display: flex;
     justify-content: center; 
     align-items: center;
-    gap: 10px;
+    gap: 10px; */
     color: rgb(58, 58, 252);
-    text-decoration: none;
+    /* text-decoration: none; */
     padding: 6px;
-    width: fit-content;
-    margin: auto;
-    border-radius: 2px;
+    /* width: fit-content; */
+    /* margin: auto; */
+    /* border-radius: 2px; */
 }
 
-.action:hover{
-        background-color: rgb(117, 171, 247);
-        color: white;
-}
+
 
 @media screen and (max-width:560px){
 .tableContainer{

@@ -35,11 +35,9 @@ export default function Ticket({id}){
         <div className={style.displayFlex}>
             <Link className={`${style.buttonContainer} ${style.editButton}`} href={`/tickets/edit/${ticket.id}`} >
               <FontAwesomeIcon icon={faEdit} className={style.iconDetails}  />
-              Edit
             </Link>
               <button className={`${style.buttonContainer} ${style.deleteButton}`} onClick={() => setShowDeleteModal(true)}>
               <FontAwesomeIcon icon={faTrash} className={style.iconDetails} />
-              Delete
             </button>
 
         </div>
