@@ -1,0 +1,89 @@
+body{
+    margin-top: 20px;
+    background-color: rgb(247, 248, 248);
+}
+
+.iconSpan{
+    background-color: rgb(24, 58, 152);
+    padding: 10px;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 15px;
+
+}
+.icon{
+    color: white;
+}
+
+
+.formHeader , .formFotter{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header{
+   margin: 3px; 
+}
+
+.par{
+    color: grey;
+    padding: 4px;
+}
+
+.form{
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 40%;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+.inputContainer{
+    margin-bottom: 15px;
+}
+.formLabel{
+   font-size: 18px;
+   font-weight: 400;
+   color: #242424;
+   font-family: 'Times New Roman', Times, serif;
+   display: block;
+   margin: 5 0 ;
+}
+
+.formInput {
+    width: 90%;
+    max-width: 700px;
+    padding: 10px;
+    /* margin-bottom: 5px; */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: rgb(24, 58, 152);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 15px 0;
+}
+.button:hover {
+    background-color: rgb(2, 22, 77);
+}
+
+
+
+.navactionLink {
+    color : rgb(24, 58, 152);
+}
+
+
+@media screen and (max-width:560px){
+    .form{
+        width: 80%;
+    }
+}
