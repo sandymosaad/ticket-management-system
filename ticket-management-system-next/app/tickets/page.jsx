@@ -4,8 +4,7 @@ export default  function AllTicket() {
 
   return (
     <div>
-      <h1>Users</h1>
-  
+      <h1>AllTicket</h1>
     </div>
   );
 }

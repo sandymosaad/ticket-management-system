@@ -1,5 +1,5 @@
-import BackLink from "../../../compoments/BackLink/backLink";
-import TicketForm from "../../../compoments/TicketForm/TicketForm";
+import BackLink from "../../../components/BackLink/backLink";
+import TicketForm from "../../../components/TicketForm/TicketForm";
 
 export default async function EdiTicket({params}) {
   const resolvedParams = await params; 
