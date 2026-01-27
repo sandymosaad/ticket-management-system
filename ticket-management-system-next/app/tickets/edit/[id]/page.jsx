@@ -1,5 +1,6 @@
-import BackLink from "../../../compoments/BackLink/backLink";
-import TicketForm from "../../../compoments/TicketForm/TicketForm";
+import BackLink from "../../../components/BackLink/backLink";
+import TicketForm from "../../../components/TicketForm/TicketForm";
+import { Suspense } from 'react';
 
 export default async function EdiTicket({params}) {
   const resolvedParams = await params; 
@@ -8,7 +9,9 @@ export default async function EdiTicket({params}) {
   //const action = "edit"
   return <>
     <BackLink/>
-    <TicketForm action="Edit" idEdit={id}/>
+       <Suspense fallback={<p>Loading...</p>}>
+         <TicketForm action="Edit" idEdit={id}/>   
+       </Suspense>
   
   </>
 }

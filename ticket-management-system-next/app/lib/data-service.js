@@ -29,7 +29,6 @@ export async function addUserProfile(profile) {
 
 export async function getLogedInUser() {
     const { data: { user } } = await supabase.auth.getUser()
-    //  console.log(user)
       return user;
 }
 
@@ -56,7 +55,7 @@ export async function getTicket(id) {
     .single();
 
   if (error) {
-    console.error("Error fetching ticket:", error);
+    console.log("Error fetching ticket:", error);
     return null;
   }
    //console.log(data)
@@ -65,6 +64,46 @@ export async function getTicket(id) {
 export async function updateTicket(id , values){
     const { data, error } = await supabase
     .from("tickets")
-    .update({'title':values.title, 'status':values.status , 'description': values.description})
+    .update({'title':values.title, 'status':values.status , 'description': values.description , 'summary':values.summary})
     .eq('id', id)
+}
+export async function deleteTicket(id){
+    const { error } = await supabase
+    .from("tickets")
+    .delete()
+    .eq('id', id);
+    if (error) {
+    console.error("Error deleteing ticket:", error);
+  }
+
+}
+export async function getTickets() {
+  const { data, error } = await supabase
+    .from("tickets")
+    .select("*");
+
+  if (error) {
+    console.error("Error fetching tickets:", error);
+    throw new Error(error.message);
+  }
+
+  return data;
+}
+
+
+
+export async function getTotalTicketsCount() {
+  const tickets = await getTickets();
+  return tickets.length;
+}
+
+
+export async function numByStatus(status) {
+  const { data, error } = await supabase
+    .from("tickets")
+    .select("id")
+    .eq("status", status);
+
+  if (error) throw new Error;
+  return data.length;
 }
