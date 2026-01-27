@@ -29,8 +29,7 @@ export async function addUserProfile(profile) {
 
 export async function getLogedInUser() {
     const { data: { user } } = await supabase.auth.getUser()
-    //  console.log(user)
-      return user;
+    return user
 }
 
 export async function addTicket(ticket) {
@@ -65,6 +64,12 @@ export async function getTicket(id) {
 export async function updateTicket(id , values){
     const { data, error } = await supabase
     .from("tickets")
-    .update({'title':values.title, 'status':values.status , 'description': values.description})
-    .eq('id', id)
-}
+    .update({'title':values.title, 'status':values.status , 'description': values.description , 'summary':values.summary})
+    .eq('id', id);
+
+    if (error) {
+    console.error("Update ticket error:", error);
+    throw new Error(error.message);
+    }
+    return data;
+    }

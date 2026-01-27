@@ -9,8 +9,7 @@ import { getUsers} from '../lib/data-service';
 import { supabase } from "../lib/supabaseClient";
 import { useRouter } from 'next/navigation';
 import {useState} from "react"  
-import Input from '../compoments/Input/page';
-import InputForm from '../compoments/InputForm/InputForm';
+import InputForm from '../components/InputForm/InputForm';
 
 export default function SignIn() {
     const router = useRouter();

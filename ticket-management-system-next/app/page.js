@@ -1,4 +1,4 @@
-import Card from "./compoments/Card/Card";
+import Card from "./components/Card/Card";
 import {
   faTicket,
   faFolderOpen,
