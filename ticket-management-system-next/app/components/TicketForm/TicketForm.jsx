@@ -12,7 +12,7 @@ import { useRouter } from 'next/navigation';
 import { useState,useEffect } from "react";
 
 export default function TicketForm({action , idEdit}) {
-      console.log(action)
+    //  console.log(action)
         const [ticket, setTicket] = useState({})
 
 
@@ -24,8 +24,10 @@ export default function TicketForm({action , idEdit}) {
                   title: data.title,
                   description: data.description,
                   status: data.status,
+                  summary: data.summary,
                 });
                 setTicket(data);
+                // console.log(`data : ${data}`)
               }
             });
           }
@@ -39,6 +41,7 @@ export default function TicketForm({action , idEdit}) {
         if (action === "Edit") {
         await updateTicket(idEdit, values);
         router.push(`/tickets/${idEdit}`);
+        console.log(values)
         return;
       }
        if (action === "Add"){
@@ -50,7 +53,9 @@ export default function TicketForm({action , idEdit}) {
           description:values.description,
           status:values.status,
           title:values.title,
-          userId:user.id
+          summary: values.summary,
+          userId:user.id,
+
         }
         const addNewTicket = await addTicket(newTicket);
         console.log(addNewTicket)
@@ -70,7 +75,7 @@ export default function TicketForm({action , idEdit}) {
       
       function handleCancellation(e){
         e.preventDefault();
-        router.push(`/`)
+        router.push(`/tickets`)
       }
 
 
@@ -89,9 +94,9 @@ export default function TicketForm({action , idEdit}) {
               title:"",
               description:"",
               status:"",
+               summary: "",
           },
-            enableReinitialize: true,
-
+          enableReinitialize: true,
           validationSchema,
           onSubmit:submitTicket,
       })
@@ -100,7 +105,8 @@ export default function TicketForm({action , idEdit}) {
         { label: "Title", type: "input", inputType:"text", inputName: "title", placeholder: "Enter ticket title" },
         { label: "Description ", type: "textarea", inputName: "description", placeholder: "Enter detailed description of the ticket" },
         { label: "Status", type: "select", inputName: "status" , options:["Open", "In Progress","Resolved", "Closed"]}, 
-    ]
+      ]
+      const summaryInput = { label: "Summary ", type: "textarea", inputName: "summary", placeholder: "Enter summary of the ticket" }
     return <>
       <div className='form'>
         <form onSubmit={formik.handleSubmit} >
@@ -113,7 +119,7 @@ export default function TicketForm({action , idEdit}) {
             </h1>
             </> }
             {inputData.map((input)=>
-            
+
             <InputForm 
             key={input.inputName} 
             input={input} 
@@ -122,8 +128,16 @@ export default function TicketForm({action , idEdit}) {
             idEdit={idEdit}
             ticket={ticket}
             />)}
-   
-            {/* {errorMessage && <p className={style.error}>{errorMessage}</p>} */}
+
+            {formik.values?.status ==='Closed' && <InputForm 
+            input={summaryInput} 
+            formik={formik}
+            action={action}
+            idEdit={idEdit}
+            ticket={ticket}
+            />
+            }
+            
             <div className={style.formFotter}>
               {action === "Add" && 
                 <button type='submit' className={`${style.button} ${'button'}`}>
