@@ -1,0 +1,55 @@
+/* [project]/ticket-management-system-next/app/components/DeleteConfirm/deleteConfirm.module.css [app-client] (css) */
+.deleteConfirm-module__1PF0Eq__modal {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 30%;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 0 2px 8px #0000001a;
+}
+
+.deleteConfirm-module__1PF0Eq__modalOverlay {
+  z-index: 1000;
+  background: #00000080;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: fixed;
+  inset: 0;
+}
+
+.deleteConfirm-module__1PF0Eq__modal h1 {
+  padding: 20px 0;
+}
+
+.deleteConfirm-module__1PF0Eq__buttons {
+  justify-content: end;
+  gap: 10px;
+  display: flex;
+}
+
+.deleteConfirm-module__1PF0Eq__buttons button {
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.deleteConfirm-module__1PF0Eq__confirmButton {
+  background-color: #2703b8;
+}
+
+.deleteConfirm-module__1PF0Eq__confirmButton:hover {
+  background-color: #130259;
+}
+
+.deleteConfirm-module__1PF0Eq__cancelButton {
+  background-color: #d6d7d8;
+}
+
+.deleteConfirm-module__1PF0Eq__cancelButton:hover {
+  background-color: #a3a4a5;
+}
+
+/*# sourceMappingURL=4e0d0_app_components_DeleteConfirm_deleteConfirm_module_css_bad6b30c._.single.css.map*/

@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/ticket-management-system-next/app/components/BackLink/backLink.module.css"],"sourcesContent":["\r\n\r\n.color{\r\n    color: rgb(106, 105, 105);\r\n}\r\n.backLink{\r\n     padding: 20px;\r\n     display: flex;\r\n     margin-left:23% ;\r\n    }\r\n.icon{\r\n    width: 22px;\r\n}\r\n\r\n\r\n@media screen and (max-width: 560px) {\r\n    .backLink {\r\n        margin-left:4%\r\n    }\r\n}\r\n"],"names":[],"mappings":"AAEA;;;;AAGA;;;;;;AAKA;;;;AAKA;EACI"}}]
+}

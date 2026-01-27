@@ -1,0 +1,22 @@
+/* [project]/ticket-management-system-next/app/components/BackLink/backLink.module.css [app-client] (css) */
+.backLink-module__JehRJG__color {
+  color: #6a6969;
+}
+
+.backLink-module__JehRJG__backLink {
+  margin-left: 23%;
+  padding: 20px;
+  display: flex;
+}
+
+.backLink-module__JehRJG__icon {
+  width: 22px;
+}
+
+@media screen and (max-width: 560px) {
+  .backLink-module__JehRJG__backLink {
+    margin-left: 4%;
+  }
+}
+
+/*# sourceMappingURL=3bce7_cket-management-system-next_app_components_BackLink_backLink_module_css_bad6b30c._.single.css.map*/

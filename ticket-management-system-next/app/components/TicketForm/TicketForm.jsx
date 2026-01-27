@@ -10,7 +10,6 @@ import { useState,useEffect } from "react";
 import { toast } from 'sonner';
 
 export default function TicketForm({action , idEdit}) {
-    //  console.log(action)
         const [ticket, setTicket] = useState({})
 
 
@@ -25,7 +24,6 @@ export default function TicketForm({action , idEdit}) {
                   summary: data.summary,
                 });
                 setTicket(data);
-                // console.log(`data : ${data}`)
               }
             });
           }
@@ -40,13 +38,10 @@ export default function TicketForm({action , idEdit}) {
         await updateTicket(idEdit, values);
         toast.success('Ticket updated successfully!');
         router.push(`/tickets/${idEdit}`);
-        console.log(values)
         return;
       }
        if (action === "Add"){
-        //console.log(values)
         const user = await getLogedInUser();
-       // console.log(user.id)
 
         const newTicket ={
           description:values.description,
@@ -60,15 +55,9 @@ export default function TicketForm({action , idEdit}) {
         toast.success('Ticket added successfully!');
         //console.log(addNewTicket)
         if (addNewTicket?.id) {
-           //console.log(addNewTicket.id)
            setTicket(addNewTicket)
           router.push(`/tickets/${addNewTicket.id}`);
-          //console.log(`/tickets/${addNewTicket.id}`)
-
          }
-        else{
-          console.log("Faild to add ticket ")
-        }
       }
       }
 

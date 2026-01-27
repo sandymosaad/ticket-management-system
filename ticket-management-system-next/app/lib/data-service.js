@@ -29,8 +29,7 @@ export async function addUserProfile(profile) {
 
 export async function getLogedInUser() {
     const { data: { user } } = await supabase.auth.getUser()
-      //console.log(user)
-      return user;
+    return user
 }
 
 export async function addTicket(ticket) {
