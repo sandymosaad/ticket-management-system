@@ -1,42 +1,77 @@
+"use client";
 
 import logo from "../../assets/logo.png";
 import Image from "next/image";
 import style from "./navbar.module.css";
-import  Link  from 'next/link';
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
-//import { getLogedInUser } from "../../lib/data-service";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { supabase } from "../../lib/supabaseClient";
 
-export default async function Navbar() {
-  // const user = await getLogedInUser();
-  //   console.log(user)
+export default function Navbar() {
+  const router = useRouter();
+  const [userEmail, setUserEmail] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+  supabase.auth.getSession().then(({ data }) => {
+    if (data?.session?.user) {
+      setUserEmail(data.session.user.email);
+    }
+    setLoading(false); 
+  });
+
+  const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+    if (session?.user) {
+      setUserEmail(session.user.email);
+    } else {
+      setUserEmail(null);
+     // router.push("/login");
+    }
+  });
+
+  return () => listener.subscription.unsubscribe();
+}, []);
+
+  async function handleLogout() {
+    const { error } = await supabase.auth.signOut();
+    if (error) console.log("Logout error:", error);
+    setUserEmail(null);
+    router.push("/login");  
+  }
+
+  if (loading) return null;
   return (
     <nav className={style.nav}>
-      <div className={style.brand} >
-          <Image 
-          src={logo}
-          alt="logo"
-          className={style.logo}
-          width={70}
-          quality={100}
-          />
-          <Link className={style.navLink} href="/">
-            <h3>Ticket Management</h3>
-            <p className={style.branPara}>Software Company Portal</p>
+      <div className={style.brand}>
+        <Image src={logo} alt="logo" className={style.logo} width={70} quality={100} />
+        <Link className={style.navLink} href="/">
+          <h3>Ticket Management</h3>
+          <p className={style.brandPara}>Software Company Portal</p>
+        </Link>
+      </div>
+
+      {userEmail ? (
+        <div className={style.user}>
+          <Link  href="/tickets" className={style.dashboard}>
+            Dashboard
           </Link>
-      </div>
-      
-      <div className={style.user}>
-        <div className={style.userData}> 
-          <p>Admin User</p>
-          <p>email</p>
-           {/* <p>{user['email']}</p> */}
+          <div className={style.userData}>
+            <p>Admin User</p>
+            <p>{userEmail}</p>
+          </div>
+          <button className={style.logoutButton} onClick={handleLogout}>
+            <FontAwesomeIcon icon={faRightToBracket} className={style.icon} />
+            Logout
+          </button>
         </div>
-        <button className={style.logoutButton}>
-          <FontAwesomeIcon icon={faRightToBracket} className={style.icon }/>
-          Logout
-        </button>
-      </div>
+      ) : (
+        <Link className="button" href="/login">
+          Sign In
+        </Link>
+      )}
     </nav>
   );
 }

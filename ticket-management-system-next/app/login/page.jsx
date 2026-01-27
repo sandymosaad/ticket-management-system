@@ -5,7 +5,6 @@ import style from "../auth.module.css"
 import  Link  from 'next/link';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
-import { getUsers} from '../lib/data-service';
 import { supabase } from "../lib/supabaseClient";
 import { useRouter } from 'next/navigation';
 import {useState} from "react"  
@@ -25,7 +24,7 @@ export default function SignIn() {
         });
 
         if(error){
-            console.error("Error signing in:", error);
+           // console.error("Error signing in:", error);
             setErrorMessage(error.message);
             return;
         }
@@ -33,7 +32,7 @@ export default function SignIn() {
         
         // const { data: { user } } = await supabase.auth.getUser()
         // console.log(user)
-        router.push('/')
+        router.push('/tickets')
 
     }
 
@@ -46,8 +45,9 @@ export default function SignIn() {
     })
 
     const inputData = [
-        { label: "Email Address", type:"input", inputype: "email", inputName: "email", placeholder: "you@example.com" },
-        { label: "Password", type:"input", inputype: "password", inputName: "password", placeholder: "*********" },
+        { label: "Email Address", type:"input", inputType: "email", inputName: "email", placeholder: "you@example.com" },
+        { label: "Password",type:"input", inputType: "password", inputName: "password", placeholder: "*********" },
+
     ] 
 return <>
 <div className={style.form}>
@@ -62,7 +62,7 @@ return <>
 
         {inputData.map((input)=><InputForm key={input.inputName} input={input} formik={formik} />)}
 
-        {errorMessage && <p className={style.error}>{errorMessage}</p>}
+        {errorMessage && <p className="error">{errorMessage}</p>}
         <div className={style.formFotter}>
             <button type='submit' className="button">
                 sign in

@@ -1,4 +1,5 @@
 .card{
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -7,15 +8,21 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     padding:  40px;
     border-radius: 15px;
+    min-width: 220px;
+    max-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
 .cardBody{
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.iconSpan{
-    background-color: rgb(24, 58, 152);
+.iconSpan{   
     padding: 10px;
     align-items: center;
     border-radius: 10px;
@@ -25,12 +32,92 @@
     color: white;
 }
 
+
+.iconSpanLandingPage{
+    padding: 10px;
+    align-items: center;
+    border-radius: 10px;
+    width: fit-content;
+}
+/*----------------------------landing page------------------------------------------*/
+
+
+.ticketIcon{
+    background-color: rgb(188, 226, 255);
+}
+.ticketIconColor{
+        color: rgb(1, 4, 159);
+
+}
+
+.statusIcon{
+     background-color:rgb(208, 247, 208) ;
+}
+.statusIconColor{
+    color:rgb(1, 122, 1) ;
+}
+.analyticsIcon{
+     background-color: rgb(247, 218, 253);
+}
+.analyticsIconColor{
+    color: rgb(150, 2, 179);
+}
+.teamIcon{
+    background-color: rgb(252, 213, 151);
+}
+.teamIconColor{
+   color: rgb(155, 96, 2);
+}
+
+.cardTextBody{
+    color: rgb(108, 108, 108);
+    font-weight: 400;
+}
+
+/*----------------------------Tickets page------------------------------------------*/
+.allTickets{
+    background-color: rgb(228, 240, 249);
+}
+.allTicketsColor{
+        color: rgb(1, 4, 159);
+
+}
+.openStatus{
+    background-color:rgb(249, 249, 169) ;
+}
+.openStatusColor{
+    color:rgb(147, 147, 1) ;
+}
+.closedStatus{
+     background-color:rgb(216, 213, 217) ;
+}
+.closedStatusColor{
+    color:rgb(140, 139, 140) ;
+}
+.inProgressStatus{
+     background-color:rgb(169, 249, 169) ;
+}
+.inProgressStatusColor{
+    color:rgb(0, 43, 0) ;
+}
+.resolvedStatus{
+     background-color: rgb(247, 218, 253);
+}
+.resolvedStatusColor{
+    color: rgb(148, 1, 178);
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: 50%;
+  }
+}
 @media screen and (max-width:560px){
     .card{
         display: flex;
         text-align: center;
         width: 80%;
-
         margin: 10px auto;
     }
 }
+

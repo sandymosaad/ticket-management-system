@@ -3,13 +3,11 @@ import { useFormik } from "formik";
 import InputForm from "../InputForm/InputForm"
 import style from "./ticketForm.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { faSave} from "@fortawesome/free-solid-svg-icons";
-
 import  * as Yup from "yup";
 import { addTicket , getLogedInUser , getTicket, updateTicket} from "../../lib/data-service";
 import { useRouter } from 'next/navigation';
 import { useState,useEffect } from "react";
+import { toast } from 'sonner';
 
 export default function TicketForm({action , idEdit}) {
         const [ticket, setTicket] = useState({})
@@ -38,6 +36,7 @@ export default function TicketForm({action , idEdit}) {
 
         if (action === "Edit") {
         await updateTicket(idEdit, values);
+        toast.success('Ticket updated successfully!');
         router.push(`/tickets/${idEdit}`);
         return;
       }
@@ -53,7 +52,8 @@ export default function TicketForm({action , idEdit}) {
 
         }
         const addNewTicket = await addTicket(newTicket);
-        console.log(addNewTicket)
+        toast.success('Ticket added successfully!');
+        //console.log(addNewTicket)
         if (addNewTicket?.id) {
            setTicket(addNewTicket)
           router.push(`/tickets/${addNewTicket.id}`);
@@ -64,7 +64,12 @@ export default function TicketForm({action , idEdit}) {
       
       function handleCancellation(e){
         e.preventDefault();
-        router.push(`/`)
+        if(action === 'Add'){
+          router.push(`/tickets`)
+        }else if (action === 'Edit'){
+            router.push(`/tickets/${idEdit}`)
+
+        }
       }
 
 
@@ -98,12 +103,11 @@ export default function TicketForm({action , idEdit}) {
       const summaryInput = { label: "Summary ", type: "textarea", inputName: "summary", placeholder: "Enter summary of the ticket" }
     return <>
       <div className='form'>
+        
         <form onSubmit={formik.handleSubmit} >
           {action==="Add" && <>
             <h1 className={style.formHeader}>
-              <span className='iconSpan'>
-                  <FontAwesomeIcon icon={faPlus} className='icon'/>
-              </span>  
+            
               Add New Ticket
             </h1>
             </> }
@@ -135,7 +139,6 @@ export default function TicketForm({action , idEdit}) {
               }
               {action === "Edit" && 
                 <button type='submit' className={`${style.button} ${'button'}`}>
-                   <FontAwesomeIcon icon={faSave} className='icon'/>
                     Save Changes
                 </button>
               }
