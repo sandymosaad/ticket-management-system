@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar/Navbar";
-
+import { Toaster } from 'sonner';
 
 export const metadata = {
   title: "Create Next App",
@@ -17,6 +17,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         <div className="container">
                   {children}
+          <Toaster richColors position="top-right" />
         </div>
       </body>
     </html>

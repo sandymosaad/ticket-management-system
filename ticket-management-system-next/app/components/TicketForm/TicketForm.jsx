@@ -3,12 +3,11 @@ import { useFormik } from "formik";
 import InputForm from "../InputForm/InputForm"
 import style from "./ticketForm.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { faSave} from "@fortawesome/free-solid-svg-icons";
 import  * as Yup from "yup";
 import { addTicket , getLogedInUser , getTicket, updateTicket} from "../../lib/data-service";
 import { useRouter } from 'next/navigation';
 import { useState,useEffect } from "react";
+import { toast } from 'sonner';
 
 export default function TicketForm({action , idEdit}) {
     //  console.log(action)
@@ -39,6 +38,7 @@ export default function TicketForm({action , idEdit}) {
 
         if (action === "Edit") {
         await updateTicket(idEdit, values);
+        toast.success('Ticket updated successfully!');
         router.push(`/tickets/${idEdit}`);
         console.log(values)
         return;
@@ -57,7 +57,7 @@ export default function TicketForm({action , idEdit}) {
 
         }
         const addNewTicket = await addTicket(newTicket);
-        
+        toast.success('Ticket added successfully!');
         //console.log(addNewTicket)
         if (addNewTicket?.id) {
            //console.log(addNewTicket.id)
@@ -150,7 +150,6 @@ export default function TicketForm({action , idEdit}) {
               }
               {action === "Edit" && 
                 <button type='submit' className={`${style.button} ${'button'}`}>
-                   <FontAwesomeIcon icon={faSave} className='icon'/>
                     Save Changes
                 </button>
               }

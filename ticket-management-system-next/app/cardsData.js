@@ -20,7 +20,8 @@ const cardsData = [
   },
   {
     title: "Open",
-    icon: faCircle,
+    icon:   faCircleDot,
+
   },
   {
     title: "In Progress",

@@ -1,12 +1,14 @@
 import style from "./deleteConfirm.module.css"
 import {deleteTicket} from '../../lib/data-service'
 import { useRouter } from "next/navigation";
+import { toast } from 'sonner';
 
 export default function DeleteConfirm({id , setShowDeleteModal}){
 const router =useRouter()
 async function handleDelete() {
   await deleteTicket(id);
   setShowDeleteModal(false)
+  toast.success('Ticket deleted successfully!');
   router.push("/tickets");
 }
 
