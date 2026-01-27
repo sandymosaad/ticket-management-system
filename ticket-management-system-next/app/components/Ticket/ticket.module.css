@@ -41,7 +41,7 @@
 } 
 
 
-.descriptionContainer , .statusContainer {
+.dataContainer{
     padding: 20px;
 }
 
@@ -56,18 +56,24 @@
     background-color:rgb(249, 249, 169) ;
 }
 .closedStatus{
-     background-color:rgb(236, 159, 255) ;
+     background-color:rgb(216, 213, 217) ;
 }
 .inProgressStatus{
      background-color:rgb(169, 249, 169) ;
 }
 .resolvedStatus{
-     background-color: rgb(230, 230, 230);
+     background-color: rgb(247, 218, 253);
 }
-
-
 
 .paraDetails{
     margin: 10px 0;
     color:  #5f5f5f;
+}
+
+.noTicketPara{
+    background-color: white;
+    width: fit-content;
+    padding: 26px;
+    border-radius: 5px;
+    margin: 30px auto;
 }

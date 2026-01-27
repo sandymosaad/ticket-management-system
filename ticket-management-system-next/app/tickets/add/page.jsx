@@ -1,6 +1,7 @@
 
-import BackLink from "../../compoments/BackLink/backLink";
-import TicketForm from "../../compoments/TicketForm/TicketForm";
+import BackLink from "../../components/BackLink/backLink";
+import TicketForm from "../../components/TicketForm/TicketForm";
+import { Suspense } from 'react';
 
 
 
@@ -8,6 +9,10 @@ export default function AddTicket() {
 
   return <>
     <BackLink/>
-    <TicketForm action="Add"/>
+       <Suspense fallback={<p>Loading...</p>}>
+       
+            <TicketForm action="Add"/>
+    
+       </Suspense>
     </>
 }

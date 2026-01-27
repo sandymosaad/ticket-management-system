@@ -1,5 +1,5 @@
 import style from "./Textarea.module.css"
-export default function Textarea({input , formik}){
+export default function Textarea({input , formik ,action, ticket}){
     const {  inputName, placeholder } = input;
 
     return <>
@@ -13,3 +13,4 @@ export default function Textarea({input , formik}){
          />
     </>
 }
+         

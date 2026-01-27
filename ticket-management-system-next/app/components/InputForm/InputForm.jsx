@@ -1,4 +1,4 @@
-import Input from "../Input/page";
+import Input from "../Input/Input";
 import Select from "../Select/Select";
 import Textarea from "../Textarea/Textarea";
 import style from "./inputForm.module.css";
@@ -7,18 +7,16 @@ export default function InputForm({input, formik , action, ticket}){
         const { label, type,inputType, inputName} = input;
 
  return <>    
-        <div className='inputContainer'> 
 
-            <label className='formLabel'>
+        <div className='inputContainer'> 
+        
+        <label className= {'formLabel'}>
                 {(type === "input" && action==="Edit" )? '' : label}
                 {action==="Add" && <span className='required'>*</span>}
-            </label>
-
+        </label>
             {type === "input" && 
             <>
                 <Input input={input} formik={formik} action={action} />
-
-
                 {action==="Edit" &&<>
                         <p className={style.paraCreatedOn}>
                                 Created on{" "}
@@ -27,9 +25,8 @@ export default function InputForm({input, formik , action, ticket}){
                         <hr />
                         </> }
             </>}
-            {type === "textarea" && <Textarea input={input} formik={formik} />}
+            {type === "textarea" && <Textarea input={input} formik={formik} action={action}  ticket={ticket}/>}
             {type === "select" && <Select input={input} formik={formik} />}
-
 
             {formik.errors[inputName]&& formik.touched[inputName]&&(
             <p className="error">
