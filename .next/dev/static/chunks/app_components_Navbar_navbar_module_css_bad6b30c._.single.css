@@ -1,0 +1,60 @@
+/* [project]/app/components/Navbar/navbar.module.css [app-client] (css) */
+.navbar-module__6gFg2a__nav {
+  background-color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 20px;
+  display: flex;
+  box-shadow: 0 2px 8px #0000001a;
+}
+
+.navbar-module__6gFg2a__brand, .navbar-module__6gFg2a__logoutButton {
+  align-items: center;
+  display: flex;
+}
+
+.navbar-module__6gFg2a__navLink {
+  color: #000;
+  text-decoration: none;
+}
+
+.navbar-module__6gFg2a__user {
+  align-items: center;
+  gap: 15px;
+  display: flex;
+}
+
+.navbar-module__6gFg2a__navLink:hover, .navbar-module__6gFg2a__userData:hover, .navbar-module__6gFg2a__dashboard:hover {
+  color: #183a98;
+}
+
+.navbar-module__6gFg2a__logoutButton {
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.navbar-module__6gFg2a__logoutButton:hover {
+  background-color: #e8eaea;
+}
+
+.navbar-module__6gFg2a__icon {
+  color: silver;
+  width: 28px;
+  padding: 5px;
+}
+
+.navbar-module__6gFg2a__dashboard {
+  color: #000;
+  text-decoration: none;
+}
+
+@media screen and (width: 320px) {
+  .navbar-module__6gFg2a__logo, .navbar-module__6gFg2a__branPara {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=app_components_Navbar_navbar_module_css_bad6b30c._.single.css.map*/
