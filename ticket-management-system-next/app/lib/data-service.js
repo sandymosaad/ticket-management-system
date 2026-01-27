@@ -29,7 +29,6 @@ export async function addUserProfile(profile) {
 
 export async function getLogedInUser() {
     const { data: { user } } = await supabase.auth.getUser()
-      //console.log(user)
       return user;
 }
 
