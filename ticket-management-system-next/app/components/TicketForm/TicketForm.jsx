@@ -57,7 +57,8 @@ export default function TicketForm({action , idEdit}) {
 
         }
         const addNewTicket = await addTicket(newTicket);
-        console.log(addNewTicket)
+        
+        //console.log(addNewTicket)
         if (addNewTicket?.id) {
            //console.log(addNewTicket.id)
            setTicket(addNewTicket)

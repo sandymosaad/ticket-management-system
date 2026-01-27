@@ -1,31 +1,45 @@
-import { NextResponse } from "next/server";
-import { supabase } from "./app/lib/supabaseClient"; 
+import { createServerClient } from '@supabase/ssr'
+import { NextResponse } from 'next/server'
 
-export async function middleware(req) {
-  const url = req.nextUrl.clone();
-  
-  const protectedPaths = ["/tickets", "/tickets/edit"];
+export async function middleware(request) {
+  let response = NextResponse.next({
+    request: {
+      headers: request.headers,
+    },
+  })
 
-  if (protectedPaths.some(path => url.pathname.startsWith(path))) {
-    const token = req.cookies.get("sb-access-token")?.value;
-
-    if (!token) {
-      url.pathname = "/";
-      return NextResponse.redirect(url);
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    {
+      cookies: {
+        getAll() {
+          return request.cookies.getAll()
+        },
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
+          response = NextResponse.next({
+            request: {
+              headers: request.headers,
+            },
+          })
+          cookiesToSet.forEach(({ name, value, options }) =>
+            response.cookies.set(name, value, options)
+          )
+        },
+      },
     }
+  )
 
-  
-    const { data, error } = await supabase.auth.getUser(token);
+  const { data: { user } } = await supabase.auth.getUser()
 
-    if (error || !data.user) {
-      url.pathname = "/login";
-      return NextResponse.redirect(url);
-    }
+  if (!user && request.nextUrl.pathname.startsWith('/tickets')) {
+    return NextResponse.redirect(new URL('/login', request.url))
   }
 
-  return NextResponse.next();
+  return response
 }
 
 export const config = {
-  matcher: ["/tickets/:path*"],
-};
+  matcher: ['/tickets/:path*'],
+}

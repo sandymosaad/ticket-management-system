@@ -12,31 +12,7 @@ import { supabase } from "../../lib/supabaseClient";
 
 export default function Navbar() {
   const router = useRouter();
-   const [userEmail, setUserEmail] = useState(null);
-
-  // useEffect(() => {
-  //   const session = supabase.auth.getSession().then(({ data }) => {
-  //     //console.log(data.session.user.email)
-  //     if (data?.session?.user) {
-  //       setUserEmail(data.session.user.email);
-  //     }else{
-  //       router.push("/login");
-  //     }
-  //   });
-
-  //   const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-  //     if (session?.user) {
-  //       setUserEmail(session.user.email);
-  //     } else {
-  //       setUserEmail(null);
-  //       router.push("/login");  
-  //     }
-
-  //   });
-
-  //   return () => listener.subscription.unsubscribe();
-  // }, []);
-
+  const [userEmail, setUserEmail] = useState(null);
   const [loading, setLoading] = useState(true);
 
 useEffect(() => {
@@ -44,7 +20,7 @@ useEffect(() => {
     if (data?.session?.user) {
       setUserEmail(data.session.user.email);
     }
-    setLoading(false); // finish loading regardless
+    setLoading(false); 
   });
 
   const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -52,7 +28,7 @@ useEffect(() => {
       setUserEmail(session.user.email);
     } else {
       setUserEmail(null);
-      router.push("/login");
+     // router.push("/login");
     }
   });
 
