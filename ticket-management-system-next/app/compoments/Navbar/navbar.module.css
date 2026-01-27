@@ -43,3 +43,9 @@
     width: 28px;
     padding: 5px;
 }
+
+@media screen and (width: 320px) {
+.logo , .branPara{
+  display: none;
+}
+}
