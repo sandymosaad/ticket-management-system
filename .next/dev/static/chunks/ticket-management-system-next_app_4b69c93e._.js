@@ -66,7 +66,6 @@ async function addUserProfile(profile) {
 }
 async function getLogedInUser() {
     const { data: { user } } = await __TURBOPACK__imported__module__$5b$project$5d2f$ticket$2d$management$2d$system$2d$next$2f$app$2f$lib$2f$supabaseClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["supabase"].auth.getUser();
-    //console.log(user)
     return user;
 }
 async function addTicket(ticket) {
