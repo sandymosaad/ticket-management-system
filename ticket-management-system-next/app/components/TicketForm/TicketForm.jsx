@@ -12,7 +12,6 @@ import { useRouter } from 'next/navigation';
 import { useState,useEffect } from "react";
 
 export default function TicketForm({action , idEdit}) {
-    //  console.log(action)
         const [ticket, setTicket] = useState({})
 
 
@@ -27,7 +26,6 @@ export default function TicketForm({action , idEdit}) {
                   summary: data.summary,
                 });
                 setTicket(data);
-                // console.log(`data : ${data}`)
               }
             });
           }
@@ -41,13 +39,10 @@ export default function TicketForm({action , idEdit}) {
         if (action === "Edit") {
         await updateTicket(idEdit, values);
         router.push(`/tickets/${idEdit}`);
-        console.log(values)
         return;
       }
        if (action === "Add"){
-        //console.log(values)
         const user = await getLogedInUser();
-       // console.log(user.id)
 
         const newTicket ={
           description:values.description,
@@ -60,15 +55,9 @@ export default function TicketForm({action , idEdit}) {
         const addNewTicket = await addTicket(newTicket);
         console.log(addNewTicket)
         if (addNewTicket?.id) {
-           //console.log(addNewTicket.id)
            setTicket(addNewTicket)
           router.push(`/tickets/${addNewTicket.id}`);
-          //console.log(`/tickets/${addNewTicket.id}`)
-
          }
-        else{
-          console.log("Faild to add ticket ")
-        }
       }
       }
 
