@@ -24,7 +24,7 @@ const cardsData = [
 
   },
   {
-    title: "In Progress",
+    title: "In Prog",
     icon: faArrowsRotate,
   },
   {

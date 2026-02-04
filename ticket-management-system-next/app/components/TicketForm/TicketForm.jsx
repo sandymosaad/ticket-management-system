@@ -98,7 +98,7 @@ export default function TicketForm({action , idEdit}) {
     const inputData = [
         { label: "Title", type: "input", inputType:"text", inputName: "title", placeholder: "Enter ticket title" },
         { label: "Description ", type: "textarea", inputName: "description", placeholder: "Enter detailed description of the ticket" },
-        { label: "Status", type: "select", inputName: "status" , options:["Open", "In Progress","Resolved", "Closed"]}, 
+        { label: "Status", type: "select", inputName: "status" , options:["Open", "In Prog","Resolved", "Closed"]}, 
       ]
       const summaryInput = { label: "Summary ", type: "textarea", inputName: "summary", placeholder: "Enter summary of the ticket" }
     return <>

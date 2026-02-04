@@ -48,7 +48,7 @@ export default function Ticket({id}){
           <h4>status</h4>
           <p className={`
                   ${"status"} 
-                  ${ticket.status === "In Progress" ? "inProgressStatus" :"" }
+                  ${ticket.status === "In Prog" ? "inProgressStatus" :"" }
                   ${ticket.status === "Closed" ?  "closedStatus":""} 
                   ${ticket.status === "Open" ?  "openStatus" :""} 
                   ${ticket.status === "Resolved" ?  "resolvedStatus":""} 

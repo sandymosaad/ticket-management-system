@@ -40,16 +40,9 @@
     white-space: nowrap;
 }
 .action{
-    /* display: flex;
-    justify-content: center; 
-    align-items: center;
-    gap: 10px; */
     color: rgb(58, 58, 252);
-    /* text-decoration: none; */
     padding: 6px;
-    /* width: fit-content; */
-    /* margin: auto; */
-    /* border-radius: 2px; */
+ 
 }
 
 
@@ -60,10 +53,13 @@
     }
    
     .cell{
-        padding: 9px 5px;
+        padding: 14px 4px;
 
     } 
-    .action{
+    /* .action{
         gap:0
+    } */
+    .actionCell{
+        display: none;
     }
 }

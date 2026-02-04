@@ -29,7 +29,7 @@ return <>
         <div 
     className={`${style.card} 
         ${card.title === "Total Tickets" ? style.allTickets :"" }
-        ${card.title === "In Progress" ? style.inProgressStatus :"" }
+        ${card.title === "In Prog" ? style.inProgressStatus :"" }
         ${card.title === "Closed" ?  style.closedStatus:""} 
         ${card.title === "Open" ?  style.openStatus :""} 
         ${card.title === "Resolved" ?  style.resolvedStatus:""} 
@@ -70,7 +70,7 @@ return <>
             <FontAwesomeIcon icon={card.icon} size="lg"
              className={`
                 ${card.title === "Total Tickets" ? style.allTicketsColor :"" }
-                ${card.title === "In Progress" ? style.inProgressStatusColor :"" }
+                ${card.title === "In Prog" ? style.inProgressStatusColor :"" }
                 ${card.title === "Closed" ?  style.closedStatusColor:""} 
                 ${card.title === "Open" ?  style.openStatusColor :""} 
                 ${card.title === "Resolved" ?  style.resolvedStatusColor:""} 

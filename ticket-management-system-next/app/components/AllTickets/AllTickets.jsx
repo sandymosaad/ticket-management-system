@@ -35,7 +35,7 @@ useEffect(()=>{
             <th className={style.cell}>Description</th>
             <th className={style.cell} >Status</th>
             <th className={style.cell}>Created </th>
-            <th className={style.cell}>Action</th>
+            <th className={`${style.cell} ${style.actionCell}`}>Action</th>
           </tr>
         </thead>
 
@@ -54,7 +54,7 @@ useEffect(()=>{
                 className={`${style.cell} ${style.statusCell}`}>
                   <span   className={`
                   ${"status"} 
-                  ${ticket.status === "In Progress" ? "inProgressStatus" :"" }
+                  ${ticket.status === "In Prog" ? "inProgressStatus" :"" }
                   ${ticket.status === "Closed" ?  "closedStatus":""} 
                   ${ticket.status === "Open" ?  "openStatus" :""} 
                   ${ticket.status === "Resolved" ?  "resolvedStatus":""} 
@@ -62,21 +62,16 @@ useEffect(()=>{
                  {ticket.status}
                   </span>
                 </td>
-                <td className={style.cell}>{new Date(ticket.created_at).toDateString()}</td>
-
-                <td className={`${style.cell}`} >
-                  {/* <Link href={`/tickets/${ticket.id}` } className={style.action}> */}
-                  <FontAwesomeIcon icon={faEye} className={style.action} />
-                    
+                {/* <td className={style.cell}>{new Date(ticket.created_at).toDateString()}</td> */}
+                <td className={style.cell}>
+                  {new Date(ticket.created_at).toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "2-digit",
+                  })}
                 </td>
-                  {/* <Link href={`/tickets/${ticket.id}` } >
-
-                    <td className={`${style.cell}`} >
-                  <FontAwesomeIcon icon={faEye} className={` ${style.action} `} />
-                  </td>
-
-                  </Link> */}
-
+                <td className={`${style.cell}`} >
+                  <FontAwesomeIcon icon={faEye}  className={`${style.action} ${style.actionCell}`}/>                
+                </td>
               </tr>
 
             );
