@@ -77,19 +77,22 @@ export async function deleteTicket(id){
   }
 
 }
+
 export async function getTickets() {
+  const { data: { user } } = await supabase.auth.getUser()
+  //console.log(`user id : ${user.id}`)
   const { data, error } = await supabase
     .from("tickets")
-    .select("*");
+    .select("*")
+    .eq("userId", user?.id);
 
   if (error) {
-    console.error("Error fetching tickets:", error);
+    console.log("Error fetching tickets:", error);
     throw new Error(error.message);
   }
 
   return data;
 }
-
 
 
 export async function getTotalTicketsCount() {
@@ -99,11 +102,17 @@ export async function getTotalTicketsCount() {
 
 
 export async function numByStatus(status) {
+  const { data: { user } } = await supabase.auth.getUser()
   const { data, error } = await supabase
     .from("tickets")
     .select("id")
-    .eq("status", status);
+    .eq("userId", user?.id)
+    .eq("status", status)
 
-  if (error) throw new Error;
+    if (error) {
+    console.log("Error fetching numbers of tickets:", error);
+    throw new Error(error.message);
+  }
+
   return data.length;
 }

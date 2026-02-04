@@ -49,6 +49,8 @@
   color: black;
 }
 
+
+
 @media screen and (max-width: 768px) {
   .nav {
     flex-direction: column;       
@@ -100,7 +102,6 @@
   }
 }
 
-/* Mobile screens */
 @media screen and (max-width: 540px) {
   .logo {
     width: 50px;

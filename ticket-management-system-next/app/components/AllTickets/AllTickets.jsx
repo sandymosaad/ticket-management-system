@@ -25,7 +25,7 @@ useEffect(()=>{
     {loading ? <Spinner/>:
       <div className={style.tableContainer}>  
         <div className={style.header}>
-          <h1>All Ticket</h1>
+          <h1>All Tickets</h1>
           <Link href="/tickets/add" className={`${"button"} ${style.addTicketBtn}`}>Add Ticket</Link>
         </div>
        <table className={style.table}>
