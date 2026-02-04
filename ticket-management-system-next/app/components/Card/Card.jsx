@@ -21,20 +21,26 @@ export default function Card({card, landingPage}){
    
    }, [])
 
+function handleClick(title){
+    if (title === "In Prog"){
+        window.location.href=`/tickets/status/InProg`;
+    } 
+    else if(title !== "Total Tickets"){
+        window.location.href=`/tickets/status/${title}`;
+    }
 
-
-
+}
 return <>
     
         <div 
-    className={`${style.card} 
-        ${card.title === "Total Tickets" ? style.allTickets :"" }
-        ${card.title === "In Prog" ? style.inProgressStatus :"" }
-        ${card.title === "Closed" ?  style.closedStatus:""} 
-        ${card.title === "Open" ?  style.openStatus :""} 
-        ${card.title === "Resolved" ?  style.resolvedStatus:""} 
-    `}
->
+        onClick={()=>handleClick(card.title)}
+        className={`${style.card} 
+            ${card.title === "Total Tickets" ? style.allTickets :"" }
+            ${card.title === "In Prog" ? style.inProgressStatus :"" }
+            ${card.title === "Closed" ?  style.closedStatus:""} 
+            ${card.title === "Open" ?  style.openStatus :""} 
+            ${card.title === "Resolved" ?  style.resolvedStatus:""} 
+        `}>
 
         <div className={style.cardBody}>
 

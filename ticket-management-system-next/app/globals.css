@@ -161,3 +161,25 @@ body{
 .resolvedStatus{
      background-color: rgb(247, 218, 253);
 }
+/*----------------------------------------------------*/
+/*------------------------------TABLE-----------------*/
+
+.tableContainer{
+    background-color: white;
+    border-radius: 5px;  
+    border: 2px solid gainsboro;
+    width: 96%;
+    margin: auto;
+    margin-top: 30px;
+
+}
+.tableContainer h1 , .addTicketBtn {
+    margin: 20px;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: px solid gray;
+}

@@ -116,3 +116,19 @@ export async function numByStatus(status) {
 
   return data.length;
 }
+
+export async function ticketsDepandOnStatus(status) {
+  const { data: { user } } = await supabase.auth.getUser()
+  const { data, error } = await supabase
+    .from("tickets")
+    .select("*")
+    .eq("userId", user?.id)
+    .eq("status", status)
+
+    if (error) {
+    console.log("Error fetching tickets:", error);
+    throw new Error(error.message);
+  }
+console.log("tickets data:", data);
+  return data;
+}
