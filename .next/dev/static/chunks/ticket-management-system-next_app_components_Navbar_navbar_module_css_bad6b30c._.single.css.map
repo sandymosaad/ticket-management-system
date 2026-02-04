@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/ticket-management-system-next/app/components/Navbar/navbar.module.css"],"sourcesContent":[".nav {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n  gap: 20px;\r\n  background-color: rgb(255, 255, 255);\r\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);\r\n  padding: 10px 20px;\r\n}\r\n\r\n.brand , .logoutButton{\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.navLink {\r\n  text-decoration: none;\r\n  color: black;\r\n}\r\n\r\n.user {\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 15px;\r\n}\r\n\r\n.navLink:hover , .userData:hover , .dashboard:hover{\r\n  color:  rgb(24, 58, 152);\r\n}\r\n\r\n\r\n.logoutButton {\r\n  background-color: white;\r\n  border: none;\r\n  padding: 10px;\r\n  border-radius: 5px;\r\n}\r\n\r\n.logoutButton:hover{\r\n  background-color: rgb(232, 234, 234);\r\n}\r\n.icon{\r\n    color: rgb(192, 192, 192);\r\n    width: 28px;\r\n    padding: 5px;\r\n}\r\n.dashboard{\r\n  text-decoration: none;\r\n  color: black;\r\n}\r\n@media screen and (max-width: 540px) {\r\n .navLink{\r\n  display: none;\r\n}\r\n}"],"names":[],"mappings":"AAAA;;;;;;;;;;AAUA;;;;;AAKA;;;;;AAKA;;;;;;AAMA;;;;AAKA;;;;;;;AAOA;;;;AAGA;;;;;;AAKA;;;;;AAIA;EACC"}}]
-}
