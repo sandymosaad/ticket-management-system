@@ -31,7 +31,7 @@
 }
 .cell{
 
-    padding: 15px;
+    padding: 10px;
     width: 20px;
     border-top: 1px solid #ddd; 
 
@@ -58,13 +58,16 @@
     }
    
     .cell{
-        padding: 14px 4px;
+        padding: 14px 3px;
 
     } 
-    /* .action{
-        gap:0
-    } */
-    .actionCell{
+ 
+ .descriptionCell,.createdCell{
         display: none;
     }
+
+
+    .tableContainer h1 , .addTicketBtn {
+    margin: 0px;
+}
 }

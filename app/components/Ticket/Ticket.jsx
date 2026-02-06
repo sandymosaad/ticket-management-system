@@ -32,7 +32,7 @@ export default function Ticket({id}){
             </p>
 
         </div>
-        <div className={style.displayFlex}>
+        <div className={`${style.displayFlex} ${style.actionButtonsContainer}`}>
             <Link className={`${style.buttonContainer} ${style.editButton}`} href={`/tickets/edit/${ticket.id}`} >
               <FontAwesomeIcon icon={faEdit} className={style.iconDetails}  />
             </Link>

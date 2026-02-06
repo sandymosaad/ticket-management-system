@@ -13,9 +13,10 @@ return <>
         <thead >
           <tr  className={`${style.tableHeader} ${style.row}`}>
             <th className={style.cell}>Title</th>
-            <th className={style.cell}>Description</th>
+            <th className={`${style.cell} ${style.descriptionCell}`}>Description</th>
             <th className={style.cell} >Status</th>
-            <th className={style.cell}>Created </th>
+            <th className={`${style.cell} ${style.createdCell}`}>Created </th>
+            {/* <th className={`${style.cell} ${style.createdCell}`}>Created </th> */}
             <th className={`${style.cell} ${style.actionCell}`}>Action</th>
           </tr>
         </thead>
@@ -30,7 +31,7 @@ return <>
 
                 }>
                 <td className={style.cell}>{ticket.title}</td>
-                <td className={style.cell}>{ticket.description}</td>
+                <td className={`${style.cell} ${style.descriptionCell}`}>{ticket.description}</td>
                 <td 
                 className={`${style.cell} ${style.statusCell}`}>
                   <span   className={`
@@ -44,7 +45,7 @@ return <>
                   </span>
                 </td>
                 {/* <td className={style.cell}>{new Date(ticket.created_at).toDateString()}</td> */}
-                <td className={style.cell}>
+                <td className={`${style.cell} ${style.createdCell}`}>
                   {new Date(ticket.created_at).toLocaleDateString("en-US", {
                     month: "short",
                     day: "2-digit",
